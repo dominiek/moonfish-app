@@ -37,11 +37,10 @@ UI is running at [http://localhost:1305/](http://localhost:1305/)
 
 - [x] Initial token sale homepage
 - [x] Add countdown logic
-- [ ] Add basic whitelisting apply flow
-- [ ] Add basic applicant magic token login
+- [x] Add basic whitelisting apply flow
+- [x] Add basic applicant magic token login
+- [ ] Add basic KYC step and registration finalization
 - [ ] Add scrolling to homepage
-- [ ] Add visual clock
-- [ ] Add basic KYC step
 - [ ] Add legal templates
 - [ ] Add secret keyphrase for every user
 - [ ] Add security recommendations to all the flow
