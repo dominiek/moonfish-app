@@ -1,19 +1,14 @@
 
-// import cookie from 'react-cookie';
-
-export const saveLoginToken = token => {
+export const saveSessionToken = token => {
   localStorage.authToken = token;
-  // This is to allow the server-side to render a different bundle:
-  // cookie.save('entryPoint', 'dashboard', { path: '/' });
 };
 
-export const getLoginToken = () => {
+export const getSessionToken = () => {
   return localStorage.authToken;
 };
 
-export const clearLoginToken = () => {
+export const clearSessionToken = () => {
   delete localStorage.authToken;
-  // cookie.remove('entryPoint', { path: '/' });
 };
 
-export const isLoggedIn = () => !!localStorage.authToken;
+export const hasSession = () => !!localStorage.authToken;

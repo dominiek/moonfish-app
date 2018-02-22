@@ -7,7 +7,7 @@ import {
   Message
 } from 'semantic-ui-react';
 import request from 'utils/request';
-import { saveLoginToken } from 'utils/authentication';
+import { saveLoginToken } from 'utils/adminAuthentication';
 import { attachPromiseToComponentState } from 'utils/async';
 import PageCenter from 'components/PageCenter';
 import AdminLoginForm from './AdminLoginForm';

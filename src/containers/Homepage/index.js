@@ -180,6 +180,7 @@ export default class HomepageLayout extends Component {
                     <List.Item as="a">Buy Tokens</List.Item>
                     <List.Item as="a">Privacy Policy</List.Item>
                     <List.Item as="a">Token Sale Terms</List.Item>
+                    <List.Item as="a">Admin Login</List.Item>
                   </List>
                 </Grid.Column>
                 <Grid.Column width={7}>

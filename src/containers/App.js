@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
-import { isLoggedIn } from 'utils/authentication';
+import { isLoggedIn } from 'utils/adminAuthentication';
 
 import Authentication from './Authentication';
 import Admin from './Admin';

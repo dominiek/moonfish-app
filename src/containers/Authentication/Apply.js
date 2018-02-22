@@ -7,18 +7,36 @@ import {
   Input,
   Message
 } from 'semantic-ui-react';
+import request from 'utils/request';
 import PageCenter from 'components/PageCenter';
 
-export default class ResetPassword extends Component {
+export default class Apply extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      params: {},
+      loading: false,
       error: null,
+      result: null,
     };
   }
+  onSubmit() {
+    const { params } = this.state;
+    this.setState({ loading: false, error: null, result: null });
+    request({
+      method: 'POST',
+      path: '/1/applicants/apply',
+      body: params
+    }).then(result => this.setState({ result, loading: false }))
+      .catch(error => this.setState({ error, loading: false }));
+  }
+  setParams(field, value) {
+    const { params } = this.state;
+    params[field] = value;
+    this.setState({ params });
+  }
   render() {
-    const { error } = this.state;
-    const sent = false;
+    const { error, loading, result } = this.state;
     return (
       <PageCenter>
         <Header as="h2" textAlign="center">
@@ -27,15 +45,16 @@ export default class ResetPassword extends Component {
         <Segment.Group>
           <Segment>
             { error && (<Message error content={error.message} />) }
-            { sent ? (
+            { result ? (
               <Message info content="Please follow the instructions in the email we sent to your mailbox" />
             ) : (
-              <Form size="large">
+              <Form size="large" onSubmit={() => this.onSubmit()}>
                 <Form.Field>
                   <Input
                     icon="mail"
                     iconPosition="left"
                     placeholder="E-mail Address"
+                    onChange={(e, props) => this.setParams('email', props.value)}
                     type="text"
                   />
                 </Form.Field>
@@ -44,11 +63,15 @@ export default class ResetPassword extends Component {
                   primary
                   size="large"
                   content="Register"
+                  loading={loading}
+                  onClick={() => this.onSubmit()}
                 />
               </Form>
             ) }
           </Segment>
-          <Segment secondary />
+          <Segment secondary>
+            <a href="/">Take me back</a>
+          </Segment>
         </Segment.Group>
       </PageCenter>
     );
