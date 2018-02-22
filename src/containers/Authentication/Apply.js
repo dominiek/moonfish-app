@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import {
   Header,
   Form,
@@ -23,7 +22,7 @@ export default class ResetPassword extends Component {
     return (
       <PageCenter>
         <Header as="h2" textAlign="center">
-          Reset Password
+          Apply to Whitelist
         </Header>
         <Segment.Group>
           <Segment>
@@ -34,49 +33,22 @@ export default class ResetPassword extends Component {
               <Form size="large">
                 <Form.Field>
                   <Input
-                    icon="key"
-                    iconPosition="left"
-                    disabled
-                    type="text"
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <Input
-                    icon="user"
+                    icon="mail"
                     iconPosition="left"
                     placeholder="E-mail Address"
-                    disabled
                     type="text"
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <Input
-                    iconPosition="left"
-                    placeholder="New Password"
-                    icon="lock"
-                    type="password"
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <Input
-                    iconPosition="left"
-                    placeholder="Repeat Password"
-                    icon="lock"
-                    type="password"
                   />
                 </Form.Field>
                 <Button
                   fluid
                   primary
                   size="large"
-                  content="Set New Password"
+                  content="Register"
                 />
               </Form>
             ) }
           </Segment>
-          <Segment secondary>
-            Remembered your password? <Link to="/login">Login</Link>
-          </Segment>
+          <Segment secondary />
         </Segment.Group>
       </PageCenter>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Button,
   Container,
@@ -13,7 +14,6 @@ import {
 } from 'semantic-ui-react';
 import request from 'utils/request';
 
-import { Link } from 'react-router-dom';
 import TokenSaleSummary from 'components/TokenSaleSummary';
 
 const FixedMenu = () => (
@@ -55,6 +55,7 @@ export default class HomepageLayout extends Component {
     const { visible, error, info } = this.state;
     return (
       <div>
+
         {visible ? <FixedMenu /> : null}
 
         <Visibility

@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Button,
   Loader,
@@ -26,7 +27,7 @@ const renderWhitelist = (details) => {
       <h2>Token Sale Starting In</h2>
       <Countdown date={details.startTimeTs} />
       <Divider hidden />
-      <Button primary size="large">
+      <Button as={Link} to="/apply" primary size="large">
         Apply for Whitelist
         <Icon name="right arrow" />
       </Button>

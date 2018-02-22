@@ -1,35 +1,25 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
+  Grid,
   Header,
   Segment,
   Message
 } from 'semantic-ui-react';
-import SignupForm from './SignupForm';
 import request from 'utils/request';
 import { saveLoginToken } from 'utils/authentication';
 import { attachPromiseToComponentState } from 'utils/async';
 import PageCenter from 'components/PageCenter';
+import AdminLoginForm from './AdminLoginForm';
 
-const signupAndLogin = async (params) => {
-  if (!params.termsAccepted) {
-    throw new Error('Oops, you have to agree to the Terms of Service');
-  }
-  await request({
-    method: 'POST',
-    path: '/1/users',
-    body: params
-  });
-  const session = await request({
+const login = async (params) => {
+  const result = await request({
     method: 'POST',
     path: '/1/users/sessions',
-    body: {
-      email: params.email,
-      password: params.password
-    }
+    body: params
   });
-  saveLoginToken(session.token);
-  return session;
+  saveLoginToken(result.token);
+  return result;
 };
 
 export default class Login extends Component {
@@ -47,21 +37,28 @@ export default class Login extends Component {
   }
   render() {
     const { error } = this.state;
-    const onSubmit = attachPromiseToComponentState(this, signupAndLogin);
+    const onSubmit = attachPromiseToComponentState(this, login);
     return (
       <PageCenter>
         <Header as="h2" textAlign="center">
-          Create Account
+          Sign In
         </Header>
         <Segment.Group>
           <Segment>
             { error && (<Message error content={error.message} />) }
-            <SignupForm
+            <AdminLoginForm
               onSubmit={onSubmit}
             />
           </Segment>
           <Segment secondary>
-            Already have an account? <Link to="/login">Login</Link>
+            <Grid>
+              <Grid.Column floated="left" width={8}>
+                <Link to="/signup">Create Account</Link>
+              </Grid.Column>
+              <Grid.Column floated="right" width={8} textAlign="right">
+                <a href="/forgot-password" className="secondary">Forgot Password</a>
+              </Grid.Column>
+            </Grid>
           </Segment>
         </Segment.Group>
       </PageCenter>
