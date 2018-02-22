@@ -1,5 +1,9 @@
 
-# Auction App for ICOs
+_Disclaimer: This is experimental work in progress. Do not use this in any production ICOs yet._
+
+# Moonfish App
+
+Moonfish is an open source platform for doing Token Sales and Initial Coin Offerings (ICOs).
 
 ## Install Dependencies
 
@@ -31,11 +35,12 @@ UI is running at [http://localhost:1305/](http://localhost:1305/)
 
 ## TODO
 
-- [ ] Initial token sale homepage
+- [x] Initial token sale homepage
+- [x] Add countdown logic
+- [ ] Add basic whitelisting apply flow
+- [ ] Add basic applicant magic token login
 - [ ] Add scrolling to homepage
-- [ ] Add countdown logic
 - [ ] Add visual clock
-- [ ] Add basic whitelisting mechanism
 - [ ] Add basic KYC step
 - [ ] Add legal templates
 - [ ] Add secret keyphrase for every user
