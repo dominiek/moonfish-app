@@ -48,13 +48,14 @@ export default class Register extends Component {
   }
   onSubmit() {
     const { params } = this.state;
-    this.setState({ loading: false, error: null });
+    this.setState({ loading: false, error: null, finished: false });
     const validationError = getValidationError(params);
     if (validationError) return this.setState({ error: validationError, loading: false });
     return request({
       method: 'POST',
       path: '/1/applicants/register',
-      body: params
+      body: params,
+      token: getSessionToken(),
     }).then(() => this.setState({ finished: true, loading: false }))
       .catch(error => this.setState({ error, loading: false }));
   }
@@ -100,7 +101,13 @@ export default class Register extends Component {
         .then((applicant) => {
           this.setState({ applicant, loading: false });
         })
-        .catch(fatalError => this.setState({ fatalError, loading: false }));
+        .catch((error) => {
+          const fatalError = error;
+          if (fatalError.message === 'jwt expired') {
+            fatalError.message = 'Your session has expired';
+          }
+          this.setState({ fatalError, loading: false });
+        });
     }
 
     return null;
@@ -149,7 +156,19 @@ export default class Register extends Component {
                 />
               </Form.Field>
               <Form.Field>
-                <p>How much are you planning to invest?</p>
+                <label>First Name</label>
+                <Input
+                  onChange={(e, props) => this.setParams('firstName', props.value)}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Last Name</label>
+                <Input
+                  onChange={(e, props) => this.setParams('lastName', props.value)}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>How much are you planning to invest?</label>
                 <Input
                   label={{ basic: true, content: 'ETH' }}
                   labelPosition="right"
@@ -163,7 +182,7 @@ export default class Register extends Component {
                 size="large"
                 content="Register"
                 loading={loading}
-                onClick={() => this.onSubmit()}
+                submit
               />
             </Form>
           ) }
@@ -195,7 +214,7 @@ export default class Register extends Component {
         {
           fatalError ? (
             <div>
-              <Message error content={error.message} />
+              <Message error content={fatalError.message} />
               <p>Please <a href="/apply">restart the application process</a></p>
             </div>
           ) : this.renderRegistration()
