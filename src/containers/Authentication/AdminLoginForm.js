@@ -5,7 +5,6 @@ import { Form, Input, Button } from 'semantic-ui-react';
 
 const LoginForm = (props) => {
   const { handleSubmit, submitting } = props;
-  console.log(submitting, props);
   return (
     <Form size="large" onSubmit={handleSubmit}>
       <Form.Field>
