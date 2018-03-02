@@ -35,7 +35,6 @@
     "mobx-react-devtools": "^4.2.15",
     "mobx-react-router": "^4.0.1",
     "mobx-utils": "^3.2.2",
-    "raw-loader": "^0.5.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-final-form": "^3.0.2",

@@ -73,10 +73,7 @@ module.exports = {
     }, {
       test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       loader: 'url-loader?limit=10000&minetype=application/font-woff'
-    }, {
-      test: /\.sol$/,
-      use: 'raw-loader'
-    }]
+    }
   },
   plugins
 };
