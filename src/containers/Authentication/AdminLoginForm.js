@@ -1,10 +1,11 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
 import FormInput from 'components/FormInput';
+import { Field } from 'react-final-form';
 import { Form, Input, Button } from 'semantic-ui-react';
 
 const LoginForm = (props) => {
   const { handleSubmit, submitting } = props;
+  console.log(submitting, props);
   return (
     <Form size="large" onSubmit={handleSubmit}>
       <Form.Field>
@@ -40,6 +41,4 @@ const LoginForm = (props) => {
   );
 };
 
-export default reduxForm({
-  form: 'login'
-})(LoginForm);
+export default LoginForm;

@@ -1,22 +1,24 @@
+import { hot } from 'react-hot-loader';
+
 import React from 'react';
-import { Provider } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
-import { ConnectedRouter } from 'react-router-redux';
+import { Provider } from 'mobx-react';
+import { Router, Route, Switch } from 'react-router-dom';
+
 import { isLoggedIn } from 'utils/adminAuthentication';
 
 import Authentication from './Authentication';
 import Admin from './Admin';
 import Homepage from './Homepage';
 
-const App = ({ store, history }) => (
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
+const App = ({ stores, history }) => (
+  <Provider stores={stores}>
+    <Router history={history}>
       <Switch>
         <Route exact path="/" component={isLoggedIn() ? Admin : Homepage} />
         <Authentication />
       </Switch>
-    </ConnectedRouter>
+    </Router>
   </Provider>
 );
 
-export default App;
+export default hot(module)(App);

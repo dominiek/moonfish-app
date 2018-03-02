@@ -1,10 +1,18 @@
 {
   "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties",
     "transform-object-rest-spread",
-    "transform-class-properties"
+    "babel-plugin-styled-components",
+    "react-hot-loader/babel",
+    "mobx-deep-action"
   ],
   "presets": [
-    "es2015",
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "not ie <= 10"]
+      }
+    }],
     "react"
   ]
 }
