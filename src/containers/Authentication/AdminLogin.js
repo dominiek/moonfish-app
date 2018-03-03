@@ -11,6 +11,7 @@ import { saveLoginToken } from 'utils/adminAuthentication';
 import { attachPromiseToComponentState } from 'utils/async';
 import PageCenter from 'components/PageCenter';
 import AdminLoginForm from './AdminLoginForm';
+import { Form } from 'react-final-form';
 
 const login = async (params) => {
   const result = await request({
@@ -46,8 +47,9 @@ export default class Login extends Component {
         <Segment.Group>
           <Segment>
             { error && (<Message error content={error.message} />) }
-            <AdminLoginForm
+            <Form
               onSubmit={onSubmit}
+              render={AdminLoginForm}
             />
           </Segment>
           <Segment secondary>
