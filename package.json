@@ -43,6 +43,7 @@
     "react-router-dom": "^4.2.2",
     "semantic-ui-less": "^2.3.0",
     "semantic-ui-react": "^0.78.3",
+    "style-loader": "^0.20.2",
     "styled-components": "^3.1.6",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0"
