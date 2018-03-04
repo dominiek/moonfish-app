@@ -3,6 +3,11 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const extractLess = new ExtractTextPlugin({
+  filename: '[name]-[contenthash].css',
+  disable: true
+});
+
 const isProduction = process.argv.indexOf('-p') >= 0;
 const ENV = isProduction ? 'production' : 'development';
 
@@ -24,10 +29,9 @@ const plugins = [
   new HtmlWebpackPlugin({
     template: 'src/index.html'
   }),
-  new ExtractTextPlugin('[name].[contenthash].css'),
-  new webpack.ProvidePlugin({
-
-  })
+  // This is necessary to emit hot updates (currently CSS only):
+  new webpack.HotModuleReplacementPlugin(),
+  extractLess
 ];
 
 const app = ['babel-polyfill', './src/index'].filter(Boolean);
@@ -62,11 +66,15 @@ module.exports = {
         // !isProduction && 'eslint-loader'
       ].filter(Boolean),
       exclude: /node_modules/,
-    }, {
-      use: ExtractTextPlugin.extract({
+    },
+    {
+      test: /\.less$/,
+      use: extractLess.extract({
+        fallback: {
+          loader: 'style-loader'
+        },
         use: ['css-loader', 'less-loader']
       }),
-      test: /\.less$/
     }, {
       test: /\.(eot|png|jpg|ttf|svg|gif)/,
       use: ['file-loader']
