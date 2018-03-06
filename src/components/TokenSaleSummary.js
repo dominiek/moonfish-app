@@ -12,8 +12,8 @@ import Countdown from './Countdown';
 const renderActive = () => {
   return (
     <div>
-      <h2>Token Sale Is Live</h2>
-      <Button primary size="large">
+      <h5>Token Sale Is Live</h5>
+      <Button as={Link} to="" basic secondary size="large" style={{ textTransform: 'uppercase' }}>
         Buy Tokens
         <Icon name="right arrow" />
       </Button>
@@ -24,10 +24,10 @@ const renderActive = () => {
 const renderWhitelist = (details) => {
   return (
     <div>
-      <h2>Token Sale Starting In</h2>
+      <h5>Token Sale Starting In</h5>
       <Countdown date={details.startTimeTs} />
       <Divider hidden />
-      <Button as={Link} to="/apply" primary size="large">
+      <Button as={Link} to="/apply" basic secondary size="large" style={{ textTransform: 'uppercase' }}>
         Apply for Whitelist
         <Icon name="right arrow" />
       </Button>
@@ -38,7 +38,7 @@ const renderWhitelist = (details) => {
 const renderEnded = () => {
   return (
     <div>
-      <h2>Token Sale Ended</h2>
+      <h5>Token Sale Ended</h5>
       <p>Thanks for everyone who participated!</p>
     </div>
   );
@@ -53,7 +53,7 @@ const renderSummary = ({ details, status }) => {
 export default (props) => {
   const { info } = props;
   return (
-    <div className="token-sale-summary" style={{ textAlign: 'center' }}>
+    <div className="token-sale-summary">
       { info ? renderSummary(info) : (<Loader />)}
     </div>
   );
