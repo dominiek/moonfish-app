@@ -4,8 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const extractLess = new ExtractTextPlugin({
-  filename: '[name]-[contenthash].css',
-  disable: true
+  filename: '[name]-[contenthash].css'
 });
 
 const isProduction = process.argv.indexOf('-p') >= 0;
@@ -76,7 +75,7 @@ module.exports = {
         use: ['css-loader', 'less-loader']
       }),
     }, {
-      test: /\.(eot|png|jpg|ttf|svg|gif)/,
+      test: /\.(eot|png|jpg|ttf|svg|gif)$/,
       use: ['file-loader']
     }, {
       test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
