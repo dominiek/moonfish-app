@@ -1,3 +1,4 @@
+/* eslint max-len: 0 */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -15,6 +16,7 @@ import {
 } from 'semantic-ui-react';
 import request from 'utils/request';
 import styled from 'styled-components';
+import HeroBackground from './Hero';
 
 import logo from 'assets/moonfish-logo.svg';
 import fish from 'assets/moonfish-fish.svg';
@@ -27,11 +29,8 @@ import iconPhase4 from 'assets/icon-phase4.svg';
 import TokenSaleSummary from 'components/TokenSaleSummary';
 
 const Hero = styled.div`
-  background: #000005; /* Old browsers */
-  background: -moz-linear-gradient(45deg, #000005 0%, #050520 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(45deg, #000005 0%,#050520 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(45deg, #000005 0%,#050520 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000005', endColorstr='#050520',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background: #000005;
+  background: linear-gradient(45deg, #000005 0%,#050520 100%);
   height: 100vh;
   color: #fff;
 
@@ -251,6 +250,7 @@ export default class HomepageLayout extends Component {
         >
           <Hero>
             <Container style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <HeroBackground />
               <TopNav inverted secondary>
                 <Menu.Menu position="left">
                   <Menu.Item className="logo">
@@ -354,7 +354,14 @@ export default class HomepageLayout extends Component {
                 <Image src={moonfishToken} alt="Moonfish PoC Token" style={{ margin: '0 auto' }} />
               </Grid.Column>
             </Grid.Row>
-            <hr style={{ width: '100%', borderColor: 'rgba(255,255,255,0.5)', margin: '60px 0', borderBottom: '0' }} />
+            <hr
+              style={{
+                width: '100%',
+                borderColor: 'rgba(255,255,255,0.5)',
+                margin: '60px 0',
+                borderBottom: '0'
+              }}
+            />
             <Grid.Row centered>
               <Grid.Column width={6} textAlign="center">
                 <Header as="h2" style={{ color: '#fad500' }}>
@@ -365,7 +372,7 @@ export default class HomepageLayout extends Component {
                 <br />
                 <Button as={Link} to="" basic secondary size="large" style={{ textTransform: 'uppercase' }}>
                   Download Whitepaper&nbsp;&nbsp;
-                  <Icon name="down arrow" style={{ marginRight: '0' }}/>
+                  <Icon name="down arrow" style={{ marginRight: '0' }} />
                 </Button>
               </Grid.Column>
             </Grid.Row>
