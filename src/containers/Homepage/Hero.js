@@ -75,8 +75,8 @@ function createPlanets(limit) {
     style.opacity = Math.random() + 0.15;
     style.webkitAnimationDelay = `${Math.random()}s`;
     style.mozAnimationDelay = `${Math.random()}s`;
-    style.webkitAnimationDuration = `${Math.random()+3}s`;
-    style.mozAnimationDuration = `${Math.random()+3}s`;
+    style.webkitAnimationDuration = `${Math.random() + 3}s`;
+    style.mozAnimationDuration = `${Math.random() + 3}s`;
     style.background = backgroundColor();
     return { key: `planets-${index}`, style };
   });

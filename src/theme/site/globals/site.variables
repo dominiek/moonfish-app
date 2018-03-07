@@ -20,7 +20,6 @@
 @googleProtocol    : 'https://';
 @googleFontRequest : 'Nunito+Sans:@{googleFontSizes}&subset=@{googleSubset}';
 
-
 @bold              : bold;
 @normal            : normal;
 
