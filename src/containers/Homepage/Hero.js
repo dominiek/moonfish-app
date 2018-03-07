@@ -56,10 +56,8 @@ function createStars(limit) {
     style.left = `${Math.random() * 100}%`;
     style.height = `${Math.random() * 3}px`;
     style.width = style.height;
-    style.webkitAnimationDelay = `${Math.random()}s`;
-    style.mozAnimationDelay = `${Math.random()}s`;
-    style.webkitAnimationDuration = `${Math.random() + 1}s`;
-    style.mozAnimationDuration = `${Math.random() + 1}s`;
+    style.animationDelay = `${Math.random()}s`;
+    style.animationDuration = `${Math.random() + 1}s`;
     return { key: `star-${index}`, style };
   });
 }
@@ -73,10 +71,8 @@ function createPlanets(limit) {
     style.height = `${(Math.random() * 6) + 2}px`;
     style.width = style.height;
     style.opacity = Math.random() + 0.15;
-    style.webkitAnimationDelay = `${Math.random()}s`;
-    style.mozAnimationDelay = `${Math.random()}s`;
-    style.webkitAnimationDuration = `${Math.random() + 3}s`;
-    style.mozAnimationDuration = `${Math.random() + 3}s`;
+    style.animationDelay = `${Math.random()}s`;
+    style.animationDuration = `${Math.random() + 3}s`;
     style.background = backgroundColor();
     return { key: `planets-${index}`, style };
   });
