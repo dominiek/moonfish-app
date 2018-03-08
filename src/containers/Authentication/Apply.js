@@ -5,10 +5,14 @@ import {
   Segment,
   Button,
   Input,
-  Message
+  Message,
+  Image,
+  Icon
 } from 'semantic-ui-react';
 import request from 'utils/request';
 import PageCenter from 'components/PageCenter';
+
+import fish from 'assets/moonfish-fish.svg';
 
 export default class Apply extends Component {
   constructor(props) {
@@ -39,14 +43,15 @@ export default class Apply extends Component {
     const { error, loading, result } = this.state;
     return (
       <PageCenter>
-        <Header as="h2" textAlign="center">
+        <Image src={fish} alt="Moonfish" style={{ height: '80px', margin: '0 auto' }} />
+        <Header as="h3" textAlign="center" style={{ color: '#FBCE0E', textTransform: 'uppercase' }}>
           Apply to Whitelist
         </Header>
         <Segment.Group>
-          <Segment>
+          <Segment padded>
             { error && (<Message error content={error.message} />) }
             { result ? (
-              <Message info content="Please follow the instructions in the email we sent to your mailbox" />
+              <Message info content="Please follow the instructions in the email we sent to your mailbox." />
             ) : (
               <Form size="large" onSubmit={() => this.onSubmit()}>
                 <Form.Field>
@@ -70,7 +75,7 @@ export default class Apply extends Component {
             ) }
           </Segment>
           <Segment secondary>
-            <a href="/">Take me back</a>
+            <a href="/" style={{ fontSize: '14px' }}><Icon name="left arrow small" /> Take me back</a>
           </Segment>
         </Segment.Group>
       </PageCenter>

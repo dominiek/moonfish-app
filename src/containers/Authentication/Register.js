@@ -9,10 +9,13 @@ import {
   Checkbox,
   Message,
   Grid,
+  Image
 } from 'semantic-ui-react';
 import request from 'utils/request';
 import PageCenter from 'components/PageCenter';
 import { saveSessionToken, getSessionToken, hasSession } from 'utils/authentication';
+
+import fish from 'assets/moonfish-fish.svg';
 
 const getMagicToken = (props) => {
   const { location } = props;
@@ -121,7 +124,7 @@ export default class Register extends Component {
     } = this.state;
     return (
       <Segment.Group>
-        <Segment>
+        <Segment padded>
           { error && (<Message error content={error.message} />)}
           { finished ? (
             <Message
@@ -132,6 +135,8 @@ export default class Register extends Component {
             />
           ) : (
             <Form size="large" onSubmit={() => this.onSubmit()}>
+              <b>Please read and acknowledge</b>
+              <br /><br />
               <Form.Field>
                 <Checkbox
                   onChange={(e, props) => this.setParams('acceptWhitepaper', props.checked)}
@@ -195,7 +200,7 @@ export default class Register extends Component {
                 Authenticated as <b>{applicant.email}</b>
               </Grid.Column>
               <Grid.Column width={6} textAlign="right">
-                <a href="/end-session">Log out</a>
+                <a href="/end-session" style={{ fontSize: '14px' }}>Log out</a>
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -208,15 +213,16 @@ export default class Register extends Component {
     if (loading) return (<Loader />);
     return (
       <PageCenter>
-        <Header as="h2" textAlign="center">
+        <Image src={fish} alt="Moonfish" style={{ height: '80px', margin: '0 auto' }} />
+        <Header as="h3" textAlign="center" style={{ color: '#FBCE0E', textTransform: 'uppercase' }}>
           Whitelist Registration
         </Header>
         {
           fatalError ? (
-            <div>
+            <Segment textAlign="center" >
               <Message error content={fatalError.message} />
-              <p>Please <a href="/apply">restart the application process</a></p>
-            </div>
+              <p><a href="/apply">Please restart the application process</a></p>
+            </Segment>
           ) : this.renderRegistration()
         }
       </PageCenter>

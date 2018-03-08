@@ -68,6 +68,8 @@ const Hero = styled.div`
     justify-content: center;
     text-align: center;
 
+    h2,
+    h3,
     h5 {
       text-transform: uppercase;
       margin-bottom: 25px;
@@ -131,21 +133,19 @@ const PageSegment = styled(Segment)`
   }
 
   &.ui.segment.inverted {
-    background: #000005; /* Old browsers */
-    background: -moz-linear-gradient(45deg, #000005 0%, #050520 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(45deg, #000005 0%,#050520 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(45deg, #000005 0%,#050520 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000005', endColorstr='#050520',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: #000005;
+    background: linear-gradient(45deg, #000005 0%,#050520 100%);
+  }
+
+  .ui.header {
+    color: #0B0B4E;
   }
 `;
 
 const Footer = styled(Segment)`
   &.ui.segment.inverted {
-    background: #000005; /* Old browsers */
-    background: -moz-linear-gradient(45deg, #000005 0%, #050520 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(45deg, #000005 0%,#050520 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(45deg, #000005 0%,#050520 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000005', endColorstr='#050520',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: #000005;
+    background: linear-gradient(45deg, #000005 0%,#050520 100%);
     padding: 50px 0;
 
     .column {
@@ -305,7 +305,7 @@ export default class HomepageLayout extends Component {
             <Grid container stackable centered style={{ fontSize: '1.25rem' }}>
               <Grid.Row>
                 <Grid.Column width={10}>
-                  <Header as="h2" style={{ textTransform: 'uppercase', textAlign: 'center', color: '#0B0B4E' }}>
+                  <Header as="h2" style={{ textTransform: 'uppercase', textAlign: 'center' }}>
                     <span style={{ display: 'block', fontSize: '1.2rem', lineHeight: '2rem' }}>Introducing</span>
                     Moonfish
                   </Header>
