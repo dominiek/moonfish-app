@@ -12,7 +12,7 @@ import Countdown from './Countdown';
 const renderActive = () => {
   return (
     <div>
-      <h5>Token Sale Is Live</h5>
+      <h2>Token Sale Is Live</h2>
       <Button as={Link} to="" basic secondary size="large" style={{ textTransform: 'uppercase' }}>
         Buy Tokens
         <Icon name="right arrow" />
@@ -38,8 +38,8 @@ const renderWhitelist = (details) => {
 const renderEnded = () => {
   return (
     <div>
-      <h5>Token Sale Ended</h5>
-      <p>Thanks for everyone who participated!</p>
+      <h3>Token Sale Ended</h3>
+      <p style={{ fontSize: '20px' }}>Thanks for everyone who participated!</p>
     </div>
   );
 };
