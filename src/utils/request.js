@@ -31,19 +31,19 @@ export default function request(options) {
       if (![200, 201].includes(res.status)) {
         return reject(new Error('Bad status code from API'));
       }
-      return res.text().then(data => {
-        let response;
+      return res.text().then(response => {
+        let json;
         try {
-          response = JSON.parse(data);
+          json = JSON.parse(response);
         } catch (e) {
           return reject(new Error('Bad JSON response from API'));
         }
-        if (!response) reject(new Error('Null JSON response from API'));
-        const { error, result } = response;
+        if (!json) reject(new Error('Null JSON response from API'));
+        const { error, data } = json;
         if (error) {
           return reject(new Error(error.message));
         }
-        return resolve(result, response);
+        return resolve(data, response);
       }).catch(error => reject(error));
     }).catch(error => reject(error));
   });

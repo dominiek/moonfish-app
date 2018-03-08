@@ -7,7 +7,6 @@ import {
 
 export default class Settings extends Component {
   render() {
-    console.log('Settings');
     const { self } = this.props;
     return (
       <div>

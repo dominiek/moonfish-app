@@ -17,5 +17,4 @@ const stores = {
   routing
 };
 
-
 ReactDOM.render(<App stores={stores} history={history} />, document.getElementById('root'));
