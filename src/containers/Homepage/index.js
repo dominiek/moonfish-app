@@ -65,6 +65,8 @@ const Hero = styled.div`
     justify-content: center;
     text-align: center;
 
+    h2,
+    h3,
     h5 {
       text-transform: uppercase;
       margin-bottom: 25px;
