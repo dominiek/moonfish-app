@@ -12,11 +12,14 @@ import {
   List,
   Menu,
   Segment,
-  Visibility
+  Visibility,
+  Transition
 } from 'semantic-ui-react';
 import request from 'utils/request';
 import styled from 'styled-components';
 import HeroBackground from './Hero';
+import { Link as ScrollLink, Element } from 'react-scroll';
+
 
 import logo from 'assets/moonfish-logo.svg';
 import fish from 'assets/moonfish-fish.svg';
@@ -206,10 +209,10 @@ const FixedMenu = () => (
         </Menu.Item>
       </Menu.Menu>
       <Menu.Menu position="right">
-        <Menu.Item as="a">About</Menu.Item>
-        <Menu.Item as="a">Token</Menu.Item>
-        <Menu.Item as="a">Whitepaper</Menu.Item>
-        <Menu.Item as="a">Roadmap</Menu.Item>
+        <Menu.Item as={ScrollLink} spy smooth offset={-100} to="about">About</Menu.Item>
+        <Menu.Item as={ScrollLink} spy smooth offset={-100} to="token">Token</Menu.Item>
+        <Menu.Item as={ScrollLink} spy smooth to="paper">Whitepaper</Menu.Item>
+        <Menu.Item as={ScrollLink} spy smooth offset={-80} to="roadmap">Roadmap</Menu.Item>
         <Menu.Item to="/apply" as={Button} className="basic secondary">
           Buy Tokens
         </Menu.Item>
@@ -240,10 +243,12 @@ export default class HomepageLayout extends Component {
     const { visible, error, info } = this.state;
     return (
       <div>
-
-        {visible ? <FixedMenu /> : null}
+        <Transition.Group animation="fade down" duration={400}>
+          {visible && <FixedMenu />}
+        </Transition.Group>
 
         <Visibility
+          offset={100}
           onBottomPassed={this.showFixedMenu}
           onBottomVisible={this.hideFixedMenu}
           once={false}
@@ -260,10 +265,10 @@ export default class HomepageLayout extends Component {
                   </Menu.Item>
                 </Menu.Menu>
                 <Menu.Menu position="right">
-                  <Menu.Item as="a">About</Menu.Item>
-                  <Menu.Item as="a">Token</Menu.Item>
-                  <Menu.Item as="a">Whitepaper</Menu.Item>
-                  <Menu.Item as="a">Roadmap</Menu.Item>
+                  <Menu.Item as={ScrollLink} smooth offset={-100} to="about">About</Menu.Item>
+                  <Menu.Item as={ScrollLink} smooth offset={-100} to="token">Token</Menu.Item>
+                  <Menu.Item as={ScrollLink} smooth to="paper">Whitepaper</Menu.Item>
+                  <Menu.Item as={ScrollLink} smooth offset={-80} to="roadmap">Roadmap</Menu.Item>
                   <Menu.Item to="/apply" as={Button} className="basic secondary">
                     Buy Tokens
                   </Menu.Item>
@@ -296,162 +301,170 @@ export default class HomepageLayout extends Component {
         </Visibility>
 
         <PageSegment vertical>
-          <Grid container stackable centered style={{ fontSize: '1.25rem' }}>
-            <Grid.Row>
-              <Grid.Column width={10}>
-                <Header as="h2" style={{ textTransform: 'uppercase', textAlign: 'center', color: '#0B0B4E' }}>
-                  <span style={{ display: 'block', fontSize: '1.2rem', lineHeight: '2rem' }}>Introducing</span>
-                  Moonfish
-                </Header>
-                <p>
-                  Over the past year we’ve seen a staggering amount of capital raised using token sales - also known as Initial Coin Offerings (ICOs).
-                  Thanks to emerging standards such as ERC20, ERC720 and NEP5 it’s becoming increasingly easy to digitize assets and to gain liquidity on public Blockchains.
-                  Doing a token sale has become increasingly complex due to the rapidly changing technological and legal landscape.
-                </p>
+          <Element name="about">
+            <Grid container stackable centered style={{ fontSize: '1.25rem' }}>
+              <Grid.Row>
+                <Grid.Column width={10}>
+                  <Header as="h2" style={{ textTransform: 'uppercase', textAlign: 'center', color: '#0B0B4E' }}>
+                    <span style={{ display: 'block', fontSize: '1.2rem', lineHeight: '2rem' }}>Introducing</span>
+                    Moonfish
+                  </Header>
+                  <p>
+                    Over the past year we’ve seen a staggering amount of capital raised using token sales - also known as Initial Coin Offerings (ICOs).
+                    Thanks to emerging standards such as ERC20, ERC720 and NEP5 it’s becoming increasingly easy to digitize assets and to gain liquidity on public Blockchains.
+                    Doing a token sale has become increasingly complex due to the rapidly changing technological and legal landscape.
+                  </p>
 
-                <p>
-                  The fact that 10% of all ICO capital raised in 2017 is in the hands of criminals illustrates the growing need for a secure and reliable token sale process.
-                  The goal of the Moonfish platform is to create open, secure and reliable software for doing token sales.
-                </p>
+                  <p>
+                    The fact that 10% of all ICO capital raised in 2017 is in the hands of criminals illustrates the growing need for a secure and reliable token sale process.
+                    The goal of the Moonfish platform is to create open, secure and reliable software for doing token sales.
+                  </p>
 
-                <p>
-                  All core Moonfish code is free, open source and publicly audit-able.
-                  The Moonfish platform codifies the latest legal, technical and security best practice in a single end-to-end solution for token sale processes.
-                </p>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+                  <p>
+                    All core Moonfish code is free, open source and publicly audit-able.
+                    The Moonfish platform codifies the latest legal, technical and security best practice in a single end-to-end solution for token sale processes.
+                  </p>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Element>
         </PageSegment>
 
         <PageSegment vertical inverted>
           <Grid container stackable style={{ fontSize: '1.25rem' }}>
-            <Grid.Row>
-              <Grid.Column width={8}>
-                <Header as="h2" style={{ color: '#fad500' }}>
-                  MOONFISH PoC Tokens
-                </Header>
-                <p>
-                Large single round token sales often create a time mismatch between developer's rewards and token buyers' interests.
-                A better model is to raise funds at multiple rounds after product market traction is proven.
-                </p>
-                <p>
-                  We will do a very limited first PoC round of Moonfish PoC tokens.
-                </p>
-                <p>
-                  <b>The goal of this token sale is twofold:</b>
-                </p>
-                <ol style={{ lineHeight: '1.4285em' }}>
-                  <li>
-                  Proof out that we can do a token sale with the Moonfish software (ICO the ICO software if you will);
-                    <br /><br />
-                  </li>
-                  <li>
-                  Get some modest funding in place to support the development efforts of the project.
-                  </li>
-                </ol>
-              </Grid.Column>
-              <Grid.Column floated="right" verticalAlign="middle" width={8}>
-                <Image src={moonfishToken} alt="Moonfish PoC Token" style={{ margin: '0 auto' }} />
-              </Grid.Column>
-            </Grid.Row>
-            <hr
-              style={{
-                width: '100%',
-                borderColor: 'rgba(255,255,255,0.5)',
-                margin: '60px 0',
-                borderBottom: '0'
-              }}
-            />
-            <Grid.Row centered>
-              <Grid.Column width={6} textAlign="center">
-                <Header as="h2" style={{ color: '#fad500' }}>
-                  Whitepaper
-                </Header>
-                <br />
-                <p>Read about MOONFISH business idea and technical implementations of the project.</p>
-                <br />
-                <Button as={Link} to="" basic secondary size="large" style={{ textTransform: 'uppercase' }}>
-                  Download Whitepaper&nbsp;&nbsp;
-                  <Icon name="down arrow" style={{ marginRight: '0' }} />
-                </Button>
-              </Grid.Column>
-            </Grid.Row>
+            <Element name="token">
+              <Grid.Row>
+                <Grid.Column width={8}>
+                  <Header as="h2" style={{ color: '#fad500' }}>
+                    MOONFISH PoC Tokens
+                  </Header>
+                  <p>
+                  Large single round token sales often create a time mismatch between developer's rewards and token buyers' interests.
+                  A better model is to raise funds at multiple rounds after product market traction is proven.
+                  </p>
+                  <p>
+                    We will do a very limited first PoC round of Moonfish PoC tokens.
+                  </p>
+                  <p>
+                    <b>The goal of this token sale is twofold:</b>
+                  </p>
+                  <ol style={{ lineHeight: '1.4285em' }}>
+                    <li>
+                    Proof out that we can do a token sale with the Moonfish software (ICO the ICO software if you will);
+                      <br /><br />
+                    </li>
+                    <li>
+                    Get some modest funding in place to support the development efforts of the project.
+                    </li>
+                  </ol>
+                </Grid.Column>
+                <Grid.Column floated="right" verticalAlign="middle" width={8}>
+                  <Image src={moonfishToken} alt="Moonfish PoC Token" style={{ margin: '0 auto' }} />
+                </Grid.Column>
+              </Grid.Row>
+            </Element>
+            <Element name="paper">
+              <hr
+                style={{
+                  width: '100%',
+                  borderColor: 'rgba(255,255,255,0.5)',
+                  margin: '60px 0',
+                  borderBottom: '0'
+                }}
+              />
+              <Grid.Row centered>
+                <Grid.Column width={6} textAlign="center">
+                  <Header as="h2" style={{ color: '#fad500' }}>
+                    Whitepaper
+                  </Header>
+                  <br />
+                  <p>Read about MOONFISH business idea and technical implementations of the project.</p>
+                  <br />
+                  <Button as={Link} to="" basic secondary size="large" style={{ textTransform: 'uppercase' }}>
+                    Download Whitepaper&nbsp;&nbsp;
+                    <Icon name="down arrow" style={{ marginRight: '0' }} />
+                  </Button>
+                </Grid.Column>
+              </Grid.Row>
+            </Element>
           </Grid>
         </PageSegment>
 
-        <PageSegment vertical>
-          <Grid container stackable verticalAlign="middle" style={{ fontSize: '1.25rem' }}>
-            <Grid.Row>
-              <Grid.Column width={5} />
-              <Grid.Column width={9}>
-                <Header as="h2">
-                  Roadmap
-                </Header>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column width={1} />
-              <Grid.Column width={4} verticalAlign="middle">
-                <Image src={iconPhase1} alt="Phase 1" style={{ height: '90px', margin: '0 auto' }} />
-              </Grid.Column>
-              <Grid.Column width={9}>
-                <Header as="h4">
-                  Phase 1: Proof of Concept Development
-                </Header>
-                <p>
-Before any token sale we want to get a first version of the software up and running. This version will at the minimum include the security best practices and considerations mentioned in this white paper.
-In addition to this, it should have a first cut of the whitelisting and participation logic to do token sales.
-                </p>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column width={1} />
-              <Grid.Column width={4} verticalAlign="middle">
-                <Image src={iconPhase2} alt="Phase 2" style={{ height: '80px', margin: '0 auto' }} />
-              </Grid.Column>
-              <Grid.Column width={9}>
-                <Header as="h4">
-                  Phase 2: Moonfish PoC ICO
-                </Header>
-                <p>
-This will be a small capped token sale for Moonfish PoC Tokens. We will be using the Moonfish platform to do this token sale. Once completed, it will be the first ICO performed using the Moonfish software.
-See “Moonfish Tokens” in Whitepaper for more details about these tokens.
-                </p>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column width={1} />
-              <Grid.Column width={4} verticalAlign="middle">
-                <Image src={iconPhase3} alt="Phase 3" style={{ height: '100px', margin: '0 auto' }} />
-              </Grid.Column>
-              <Grid.Column width={9}>
-                <Header as="h4">
-                  Phase 3: Proof of MVP
-                </Header>
-                <p>
-                  This phase is the “rinse and repeat” stage where we solicit feedback from the marketplace.
-                  The goal is to add additional capabilities and security features to the Moonfish software and to have it used by future token sales. Once we’re seeing steady usage of the software we will have proven out our Minimum Viable Product.
-                </p>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column width={1} />
-              <Grid.Column width={4} verticalAlign="middle">
-                <Image src={iconPhase4} alt="Phase 4" style={{ height: '100px', margin: '0 auto' }} />
-              </Grid.Column>
-              <Grid.Column width={9}>
-                <Header as="h4">
-                  Phase 4: Tokenomics Development, Further Decentralization Roadmap & ICO
-                </Header>
-                <p>
-                The MVP phase will give us a lot of feedback from the market.
-                Based on this we can define a monetization strategy and longer term roadmap that incorporates tokenomics.
-                This will involve a secondary token sale where we convert the Moonfish POC tokens into it.
-                </p>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </PageSegment>
+        <Element name="roadmap">
+          <PageSegment vertical>
+            <Grid container stackable verticalAlign="middle" style={{ fontSize: '1.25rem' }}>
+              <Grid.Row>
+                <Grid.Column width={5} />
+                <Grid.Column width={9}>
+                  <Header as="h2">
+                    Roadmap
+                  </Header>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column width={1} />
+                <Grid.Column width={4} verticalAlign="middle">
+                  <Image src={iconPhase1} alt="Phase 1" style={{ height: '90px', margin: '0 auto' }} />
+                </Grid.Column>
+                <Grid.Column width={9}>
+                  <Header as="h4">
+                    Phase 1: Proof of Concept Development
+                  </Header>
+                  <p>
+  Before any token sale we want to get a first version of the software up and running. This version will at the minimum include the security best practices and considerations mentioned in this white paper.
+  In addition to this, it should have a first cut of the whitelisting and participation logic to do token sales.
+                  </p>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column width={1} />
+                <Grid.Column width={4} verticalAlign="middle">
+                  <Image src={iconPhase2} alt="Phase 2" style={{ height: '80px', margin: '0 auto' }} />
+                </Grid.Column>
+                <Grid.Column width={9}>
+                  <Header as="h4">
+                    Phase 2: Moonfish PoC ICO
+                  </Header>
+                  <p>
+  This will be a small capped token sale for Moonfish PoC Tokens. We will be using the Moonfish platform to do this token sale. Once completed, it will be the first ICO performed using the Moonfish software.
+  See “Moonfish Tokens” in Whitepaper for more details about these tokens.
+                  </p>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column width={1} />
+                <Grid.Column width={4} verticalAlign="middle">
+                  <Image src={iconPhase3} alt="Phase 3" style={{ height: '100px', margin: '0 auto' }} />
+                </Grid.Column>
+                <Grid.Column width={9}>
+                  <Header as="h4">
+                    Phase 3: Proof of MVP
+                  </Header>
+                  <p>
+                    This phase is the “rinse and repeat” stage where we solicit feedback from the marketplace.
+                    The goal is to add additional capabilities and security features to the Moonfish software and to have it used by future token sales. Once we’re seeing steady usage of the software we will have proven out our Minimum Viable Product.
+                  </p>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column width={1} />
+                <Grid.Column width={4} verticalAlign="middle">
+                  <Image src={iconPhase4} alt="Phase 4" style={{ height: '100px', margin: '0 auto' }} />
+                </Grid.Column>
+                <Grid.Column width={9}>
+                  <Header as="h4">
+                    Phase 4: Tokenomics Development, Further Decentralization Roadmap & ICO
+                  </Header>
+                  <p>
+                  The MVP phase will give us a lot of feedback from the market.
+                  Based on this we can define a monetization strategy and longer term roadmap that incorporates tokenomics.
+                  This will involve a secondary token sale where we convert the Moonfish POC tokens into it.
+                  </p>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </PageSegment>
+        </Element>
 
         <Footer inverted vertical>
           <Container>
