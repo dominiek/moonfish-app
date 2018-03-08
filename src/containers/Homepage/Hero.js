@@ -57,7 +57,7 @@ function createStars(limit) {
     style.height = `${Math.random() * 3}px`;
     style.width = style.height;
     style.animationDelay = `${Math.random()}s`;
-    style.animationDuration = `${Math.random() + 1}s`;
+    style.animationDuration = `${Math.random() + 2}s`;
     return { key: `star-${index}`, style };
   });
 }
@@ -72,7 +72,7 @@ function createPlanets(limit) {
     style.width = style.height;
     style.opacity = Math.random() + 0.15;
     style.animationDelay = `${Math.random()}s`;
-    style.animationDuration = `${Math.random() + 3}s`;
+    style.animationDuration = `${Math.random() + 4}s`;
     style.background = backgroundColor();
     return { key: `planets-${index}`, style };
   });
@@ -81,8 +81,8 @@ function createPlanets(limit) {
 export default class Home extends React.Component {
   render() {
     const viewportSize = window.innerHeight + window.innerWidth;
-    const stars = createStars(Math.round(viewportSize * 0.12));
-    const planets = createPlanets(Math.round(viewportSize * 0.025));
+    const stars = createStars(Math.round(viewportSize * 0.08));
+    const planets = createPlanets(Math.round(viewportSize * 0.01));
     return (
       <div>
         { stars.map(p => <Star {...p} />)}
