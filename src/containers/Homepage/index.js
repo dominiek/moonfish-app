@@ -209,10 +209,10 @@ const FixedMenu = () => (
         </Menu.Item>
       </Menu.Menu>
       <Menu.Menu position="right">
-        <Menu.Item as={ScrollLink} spy smooth offset={-100} to="about">About</Menu.Item>
-        <Menu.Item as={ScrollLink} spy smooth offset={-100} to="token">Token</Menu.Item>
-        <Menu.Item as={ScrollLink} spy smooth to="paper">Whitepaper</Menu.Item>
-        <Menu.Item as={ScrollLink} spy smooth offset={-80} to="roadmap">Roadmap</Menu.Item>
+        <Menu.Item as={ScrollLink} spy smooth offset={-140} to="about">About</Menu.Item>
+        <Menu.Item as={ScrollLink} spy smooth offset={-160} to="token">Token</Menu.Item>
+        <Menu.Item as={ScrollLink} spy smooth offset={-140} to="paper">Whitepaper</Menu.Item>
+        <Menu.Item as={ScrollLink} spy smooth offset={-60} to="roadmap">Roadmap</Menu.Item>
         <Menu.Item to="/apply" as={Button} className="basic secondary">
           Buy Tokens
         </Menu.Item>
@@ -332,9 +332,9 @@ export default class HomepageLayout extends Component {
 
         <PageSegment vertical inverted>
           <Grid container stackable style={{ fontSize: '1.25rem' }}>
-            <Element name="token">
-              <Grid.Row>
-                <Grid.Column width={8}>
+            <Grid.Row>
+              <Grid.Column width={8}>
+                <Element name="token">
                   <Header as="h2" style={{ color: '#fad500' }}>
                     MOONFISH PoC Tokens
                   </Header>
@@ -357,23 +357,23 @@ export default class HomepageLayout extends Component {
                     Get some modest funding in place to support the development efforts of the project.
                     </li>
                   </ol>
-                </Grid.Column>
-                <Grid.Column floated="right" verticalAlign="middle" width={8}>
-                  <Image src={moonfishToken} alt="Moonfish PoC Token" style={{ margin: '0 auto' }} />
-                </Grid.Column>
-              </Grid.Row>
-            </Element>
-            <Element name="paper">
-              <hr
-                style={{
-                  width: '100%',
-                  borderColor: 'rgba(255,255,255,0.5)',
-                  margin: '60px 0',
-                  borderBottom: '0'
-                }}
-              />
-              <Grid.Row centered>
-                <Grid.Column width={6} textAlign="center">
+                </Element>
+              </Grid.Column>
+              <Grid.Column verticalAlign="middle" width={8}>
+                <Image src={moonfishToken} alt="Moonfish PoC Token" style={{ margin: '0 auto' }} />
+              </Grid.Column>
+            </Grid.Row>
+            <hr
+              style={{
+                width: '100%',
+                borderColor: 'rgba(255,255,255,0.5)',
+                margin: '60px 0',
+                borderBottom: '0'
+              }}
+            />
+            <Grid.Row centered>
+              <Grid.Column width={6} textAlign="center">
+                <Element name="paper">
                   <Header as="h2" style={{ color: '#fad500' }}>
                     Whitepaper
                   </Header>
@@ -384,9 +384,9 @@ export default class HomepageLayout extends Component {
                     Download Whitepaper&nbsp;&nbsp;
                     <Icon name="down arrow" style={{ marginRight: '0' }} />
                   </Button>
-                </Grid.Column>
-              </Grid.Row>
-            </Element>
+                </Element>
+              </Grid.Column>
+            </Grid.Row>
           </Grid>
         </PageSegment>
 
@@ -472,10 +472,10 @@ export default class HomepageLayout extends Component {
               <Grid.Row stretched>
                 <Grid.Column>
                   <List link inverted>
-                    <List.Item as="a">About</List.Item>
-                    <List.Item as="a">Token</List.Item>
-                    <List.Item as="a">Whitepaper</List.Item>
-                    <List.Item as="a">Roadmap</List.Item>
+                    <List.Item as={ScrollLink} spy smooth offset={-140} to="about">About</List.Item>
+                    <List.Item as={ScrollLink} spy smooth offset={-160} to="token">Token</List.Item>
+                    <List.Item as={ScrollLink} spy smooth offset={-140} to="paper">Whitepaper</List.Item>
+                    <List.Item as={ScrollLink} spy smooth offset={-60} to="roadmap">Roadmap</List.Item>
                     <List.Item as="a">Team</List.Item>
                   </List>
                 </Grid.Column>
