@@ -198,8 +198,8 @@ const Signature = styled.div`
   }
 `;
 
-const FixedMenu = () => (
-  <TopNavFixed fixed="top" inverted secondary>
+const FixedMenu = ({ className, style }) => (
+  <TopNavFixed className={className} style={style} fixed="top" inverted secondary>
     <Container>
       <Menu.Menu position="left">
         <Menu.Item className="logo">
@@ -243,7 +243,7 @@ export default class HomepageLayout extends Component {
     const { visible, error, info } = this.state;
     return (
       <div>
-        <Transition.Group animation="fade down" duration={400}>
+        <Transition.Group animation="fade down" duration={500}>
           {visible && <FixedMenu />}
         </Transition.Group>
 
