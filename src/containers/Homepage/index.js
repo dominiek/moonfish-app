@@ -9,17 +9,16 @@ import {
   Icon,
   Image,
   Message,
-  List,
   Menu,
   Segment,
   Visibility,
   Transition
 } from 'semantic-ui-react';
+
 import request from 'utils/request';
 import styled from 'styled-components';
 import HeroBackground from './Hero';
 import { Link as ScrollLink, Element } from 'react-scroll';
-
 
 import logo from 'assets/moonfish-logo.svg';
 import fish from 'assets/moonfish-fish.svg';
@@ -30,6 +29,9 @@ import iconPhase3 from 'assets/icon-phase3.svg';
 import iconPhase4 from 'assets/icon-phase4.svg';
 
 import TokenSaleSummary from 'components/TokenSaleSummary';
+
+import Footer from 'components/Footer';
+import Signature from 'components/Signature';
 
 const Hero = styled.div`
   background: #000005;
@@ -139,62 +141,6 @@ const PageSegment = styled(Segment)`
 
   .ui.header {
     color: #0B0B4E;
-  }
-`;
-
-const Footer = styled(Segment)`
-  &.ui.segment.inverted {
-    background: #000005;
-    background: linear-gradient(45deg, #000005 0%,#050520 100%);
-    padding: 50px 0;
-
-    .column {
-      border-left: 1px solid rgba(255,255,255,0.3);
-    }
-
-    .grid.column {
-      border: 0;
-    }
-
-    .link {
-      text-transform: uppercase;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      a {
-        color: rgba(255,255,255,0.7);
-        line-height: 1.75rem;
-      }
-    }
-
-  }
-`;
-
-const Signature = styled.div`
-  background: #000005;
-  border-top: 1px solid rgba(255,255,255,0.3);
-  padding: 30px 0;
-  text-align: center;
-  color: #fff;
-  letter-spacing: 0.1em;
-  font-size: 14px;
-
-  span {
-    color: #FBCE0E;
-    text-transform: uppercase;
-  }
-
-  a {
-    color: #FBCE0E;
-    font-weight: 900;
-    text-decoration: underline;
-  }
-
-  .ui.image {
-    height: 30px;
-    display: inline-block;
-    margin-right: 20px;
   }
 `;
 
@@ -465,45 +411,8 @@ export default class HomepageLayout extends Component {
             </Grid>
           </PageSegment>
         </Element>
-
-        <Footer inverted vertical>
-          <Container>
-            <Grid inverted stackable columns={3} textAlign="center">
-              <Grid.Row stretched>
-                <Grid.Column>
-                  <List link inverted>
-                    <List.Item as="a">About</List.Item>
-                    <List.Item as="a">Token</List.Item>
-                    <List.Item as="a">Whitepaper</List.Item>
-                    <List.Item as="a">Roadmap</List.Item>
-                    <List.Item as="a">Team</List.Item>
-                  </List>
-                </Grid.Column>
-                <Grid.Column>
-                  <List link inverted>
-                    <List.Item as="a">Buy Tokens</List.Item>
-                    <List.Item as="a">Privacy Policy</List.Item>
-                    <List.Item as="a">Token Sale Terms</List.Item>
-                    <List.Item as="a">Admin Login</List.Item>
-                  </List>
-                </Grid.Column>
-                <Grid.Column>
-                  <Image src={logo} alt="Moonfish Logo" style={{ height: '80px', margin: '0 auto' }} />
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Container>
-        </Footer>
-
-        <Signature>
-          <Container>
-            <Image src={fish} alt="Moonfish Fish" />
-            <b>
-              <span>Created with <Link as="a" to="/">Moonfish</Link></span> &mdash;
-              This Token Sale experience was built using Moonfish.
-            </b>
-          </Container>
-        </Signature>
+        <Footer />
+        <Signature />
       </div>
     );
   }
