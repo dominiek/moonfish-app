@@ -158,6 +158,7 @@ const TopNav = styled(Menu)`
       text-transform: uppercase;
       background: none;
       letter-spacing: 0.06em
+      padding: 0.8125em 0.68em;
     }
 
     .menu .item.logo img {
@@ -172,14 +173,14 @@ const TopNav = styled(Menu)`
       }
     }
 
-    .menu .item.button {
+    .menu .item .button {
       padding-left: 32px;
       padding-right: 32px;
-      margin-left: 10px;
       border-radius: 3px !important;
+      text-transform: uppercase;
     }
 
-    .menu .item.button:hover {
+    .menu .item .button:hover {
       background: #FBCE0E !important;
       color: #0B0B4E !important;
     }
@@ -277,8 +278,10 @@ const FixedMenu = (props) => (
         <Menu.Item as={ScrollLink} spy smooth offset={-120} to="token">Token</Menu.Item>
         <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap">Roadmap</Menu.Item>
         <Menu.Item as={ScrollLink} spy smooth offset={-20} to="code">Code</Menu.Item>
-        <Menu.Item to="/apply" as={Link} className="basic secondary">
-          Buy Tokens
+        <Menu.Item>
+          <Button to="/apply" as={Link} className="basic secondary">
+            Buy Tokens
+          </Button>
         </Menu.Item>
         <Menu.Item className="toc" onClick={props.toggleToc}>
           <Icon name="sidebar" /> Menu
@@ -309,9 +312,13 @@ const SidebarMenu = styled(Sidebar)`
         }
       }
 
-      .item.button {
+      .item .button {
+        text-transform: uppercase;
         padding-left: 10px;
         padding-right: 10px;
+        line-height: 1.5em;
+        font-size: 14px;
+        margin: 0;
       }
 
       .item.logo {
@@ -371,8 +378,10 @@ export default class HomepageLayout extends Component {
             <Menu.Item as={ScrollLink} spy smooth offset={-110} to="token" onClick={this.toggleToc}>Token</Menu.Item>
             <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap" onClick={this.toggleToc}>Roadmap</Menu.Item>
             <Menu.Item as={ScrollLink} spy smooth offset={-20} to="code" onClick={this.toggleToc}>Code</Menu.Item>
-            <Menu.Item to="/apply" as={Link} className="basic secondary" onClick={this.toggleToc}>
-              Buy Tokens
+            <Menu.Item>
+              <Button to="/apply" as={Link} className="basic secondary">
+                Buy Tokens
+              </Button>
             </Menu.Item>
           </SidebarMenu>
           <Sidebar.Pusher>
@@ -400,8 +409,10 @@ export default class HomepageLayout extends Component {
                       <Menu.Item as={ScrollLink} spy smooth offset={-110} to="token">Token</Menu.Item>
                       <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap">Roadmap</Menu.Item>
                       <Menu.Item as={ScrollLink} spy smooth offset={-20} to="code">Code</Menu.Item>
-                      <Menu.Item to="/apply" as={Link} className="basic secondary">
-                        Buy Tokens
+                      <Menu.Item>
+                        <Button to="/apply" as={Link} className="basic secondary">
+                          Buy Tokens
+                        </Button>
                       </Menu.Item>
                       <Menu.Item className="toc" onClick={this.toggleToc}>
                         <Icon name="sidebar" /> Menu
@@ -601,7 +612,7 @@ export default class HomepageLayout extends Component {
                 </Grid>
               </PageSegment>
             </Element>
-            <PageSegment vertical inverted>
+            <PageSegment vertical inverted style={{ borderBottom: '1px solid rgba(255,255,255,0.2)' }}>
               <Grid container stackable>
                 <Grid.Row centered>
                   <Grid.Column width={8} textAlign="center">
