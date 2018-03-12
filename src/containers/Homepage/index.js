@@ -358,8 +358,8 @@ const FixedMenu = (props) => (
       </Menu.Menu>
       <Menu.Menu position="right">
         <Menu.Item as={ScrollLink} spy smooth offset={-100} to="about">About</Menu.Item>
-        <Menu.Item as={ScrollLink} spy smooth offset={-120} to="token">Token</Menu.Item>
         <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper">Whitepaper</Menu.Item>
+        <Menu.Item as={ScrollLink} spy smooth offset={-120} to="token">Token</Menu.Item>
         <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap">Roadmap</Menu.Item>
         <Menu.Item to="/apply" as={Button} className="basic secondary">
           Buy Tokens
@@ -451,8 +451,8 @@ export default class HomepageLayout extends Component {
               </Link>
             </Menu.Item>
             <Menu.Item as={ScrollLink} spy smooth offset={-100} to="about" onClick={this.toggleToc}>About</Menu.Item>
-            <Menu.Item as={ScrollLink} spy smooth offset={-110} to="token" onClick={this.toggleToc}>Token</Menu.Item>
             <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper" onClick={this.toggleToc}>Whitepaper</Menu.Item>
+            <Menu.Item as={ScrollLink} spy smooth offset={-110} to="token" onClick={this.toggleToc}>Token</Menu.Item>
             <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap" onClick={this.toggleToc}>Roadmap</Menu.Item>
             <Menu.Item to="/apply" as={Button} className="basic secondary" onClick={this.toggleToc}>
               Buy Tokens
@@ -479,8 +479,8 @@ export default class HomepageLayout extends Component {
                     </Menu.Menu>
                     <Menu.Menu position="right">
                       <Menu.Item as={ScrollLink} spy smooth offset={-100} to="about">About</Menu.Item>
-                      <Menu.Item as={ScrollLink} spy smooth offset={-110} to="token">Token</Menu.Item>
                       <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper">Whitepaper</Menu.Item>
+                      <Menu.Item as={ScrollLink} spy smooth offset={-110} to="token">Token</Menu.Item>
                       <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap">Roadmap</Menu.Item>
                       <Menu.Item to="/apply" as={Button} className="basic secondary">
                         Buy Tokens
@@ -548,35 +548,22 @@ export default class HomepageLayout extends Component {
 
             <PageSegment vertical inverted>
               <Grid container stackable>
-                <Grid.Row>
-                  <Grid.Column width={8}>
-                    <Element name="token">
+                <Grid.Row centered>
+                  <Grid.Column width={8} textAlign="center">
+                    <Element name="paper">
                       <Header as="h2" style={{ color: '#fad500' }}>
-                        MOONFISH PoC Tokens
+                        Whitepaper
                       </Header>
+                      <br />
                       <p>
-                      Large single round token sales often create a time mismatch between developer's rewards and token buyers' interests.
-                      A better model is to raise funds at multiple rounds after product market traction is proven.
+                        Read about the MOONFISH platform in our draft whitepaper.
                       </p>
-                      <p>
-                        We will do a very limited first PoC round of Moonfish PoC tokens.
-                      </p>
-                      <p>
-                        <b>The goal of this token sale is twofold:</b>
-                      </p>
-                      <ol style={{ lineHeight: '1.4285em' }}>
-                        <li>
-                        Proof out that we can do a token sale with the Moonfish software (ICO the ICO software if you will);
-                          <br /><br />
-                        </li>
-                        <li>
-                        Get some modest funding in place to support the development efforts of the project.
-                        </li>
-                      </ol>
+                      <br />
+                      <Button as="a" href={whitepaperPdf} target="_blank" basic secondary size="large" style={{ textTransform: 'uppercase' }}>
+                        Download Whitepaper&nbsp;&nbsp;
+                        <Icon name="down arrow" style={{ marginRight: '0' }} />
+                      </Button>
                     </Element>
-                  </Grid.Column>
-                  <Grid.Column verticalAlign="middle" width={8}>
-                    <Image src={moonfishToken} alt="Moonfish PoC Token" className="moonfish-token" />
                   </Grid.Column>
                 </Grid.Row>
                 <hr
@@ -587,20 +574,35 @@ export default class HomepageLayout extends Component {
                     borderBottom: '0'
                   }}
                 />
-                <Grid.Row centered>
-                  <Grid.Column width={8} textAlign="center">
-                    <Element name="paper">
+                <Grid.Row>
+                  <Grid.Column width={8}>
+                    <Element name="token">
                       <Header as="h2" style={{ color: '#fad500' }}>
-                        Whitepaper
+                        MOONFISH PoC Tokens
                       </Header>
-                      <br />
-                      <p>Read about MOONFISH business idea and technical implementations of the project.</p>
-                      <br />
-                      <Button as="a" href={whitepaperPdf} target="_blank" basic secondary size="large" style={{ textTransform: 'uppercase' }}>
-                        Download Whitepaper&nbsp;&nbsp;
-                        <Icon name="down arrow" style={{ marginRight: '0' }} />
-                      </Button>
+                      <p>
+                        We are planning a small initial token pre-sale for Moonfish.
+                        The goal of this “Moonfish PoC Token Micro-Sale” is twofold:
+                        1. Prove out that we can do a token sale with the Moonfish software (ICO the ICO software if you will);
+                        2. Get some modest funding in place to support the development efforts of the project.
+                      </p>
+
+                      <p>
+                        <i>
+                          Disclaimer: The core Moonfish platform is open source and will remain open source.
+                          These Moonfish PoC tokens will have no economic return or value.
+                          They are a thank you token received upon giving a donation.
+                        </i>
+                      </p>
+
+                      <p>
+                        Once we have proved out the Moonfish MVP (see roadmap) it is the project’s intention to do a secondary token sale with tokens that have utility economics incorporated in the network.
+                        We may choose to convert or not convert Moonfish PoC Tokens into this sale depending on the legal and regulatory landscape.
+                      </p>
                     </Element>
+                  </Grid.Column>
+                  <Grid.Column verticalAlign="middle" width={8}>
+                    <Image src={moonfishToken} alt="Moonfish PoC Token" className="moonfish-token" />
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
