@@ -361,7 +361,7 @@ const FixedMenu = (props) => (
         <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper">Whitepaper</Menu.Item>
         <Menu.Item as={ScrollLink} spy smooth offset={-120} to="token">Token</Menu.Item>
         <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap">Roadmap</Menu.Item>
-        <Menu.Item to="/apply" as={Button} className="basic secondary">
+        <Menu.Item to="/apply" as={Link} className="basic secondary">
           Buy Tokens
         </Menu.Item>
         <Menu.Item className="toc" onClick={props.toggleToc}>
@@ -454,7 +454,7 @@ export default class HomepageLayout extends Component {
             <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper" onClick={this.toggleToc}>Whitepaper</Menu.Item>
             <Menu.Item as={ScrollLink} spy smooth offset={-110} to="token" onClick={this.toggleToc}>Token</Menu.Item>
             <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap" onClick={this.toggleToc}>Roadmap</Menu.Item>
-            <Menu.Item to="/apply" as={Button} className="basic secondary" onClick={this.toggleToc}>
+            <Menu.Item to="/apply" as={Link} className="basic secondary" onClick={this.toggleToc}>
               Buy Tokens
             </Menu.Item>
           </SidebarMenu>
@@ -482,7 +482,7 @@ export default class HomepageLayout extends Component {
                       <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper">Whitepaper</Menu.Item>
                       <Menu.Item as={ScrollLink} spy smooth offset={-110} to="token">Token</Menu.Item>
                       <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap">Roadmap</Menu.Item>
-                      <Menu.Item to="/apply" as={Button} className="basic secondary">
+                      <Menu.Item to="/apply" as={Link} className="basic secondary">
                         Buy Tokens
                       </Menu.Item>
                       <Menu.Item className="toc" onClick={this.toggleToc}>
