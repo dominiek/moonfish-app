@@ -44,10 +44,12 @@ export default class Register extends Component {
       applicant: null,
       params: {},
       finished: false,
+      info: null,
     };
   }
   componentDidMount() {
     this.authenticateWithToken();
+    this.loadInfo();
   }
   onSubmit() {
     const { params } = this.state;
@@ -66,6 +68,14 @@ export default class Register extends Component {
     const { params } = this.state;
     params[field] = value;
     this.setState({ params });
+  }
+  loadInfo() {
+    request({
+      method: 'GET',
+      path: '/1/info',
+    })
+      .then(info => this.setState({ info }))
+      .catch(error => this.setState({ error }));
   }
   authenticateWithToken() {
     const token = getToken(this.props);
@@ -120,7 +130,8 @@ export default class Register extends Component {
       applicant,
       loading,
       error,
-      finished
+      finished,
+      info
     } = this.state;
     return (
       <Segment.Group>
@@ -135,6 +146,12 @@ export default class Register extends Component {
             />
           ) : (
             <Form size="large" onSubmit={() => this.onSubmit()}>
+              { info && info.status.isOverSubscribed && (
+                <Message
+                  info
+                  content="Looks like the whitelist is currently oversubscribed. After completing your registration, we'll put you on the waiting list for a next batch of invites."
+                />
+              ) }
               <b>Please read and acknowledge</b>
               <br /><br />
               <Form.Field>

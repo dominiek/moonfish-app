@@ -51,7 +51,23 @@ export default class Apply extends Component {
           <Segment padded>
             { error && (<Message error content={error.message} />) }
             { result ? (
-              <Message info content="Please follow the instructions in the email we sent to your mailbox." />
+              <Message info>
+                <Message.Header>Mail sent!</Message.Header>
+                <p>
+                  To continue the application process,
+                  please follow the instructions in the email we sent to { result.email }
+                </p>
+                <p>
+                  We've created a key phrase that you can use to
+                  make sure communication is really from us.
+                  Your unique phrase is:
+                </p>
+                <p><strong>{ result.mnemonicPhrase}</strong></p>
+                <p>
+                  We recommend you write down this phrase to
+                  validate any future communication from us.
+                </p>
+              </Message>
             ) : (
               <Form size="large" onSubmit={() => this.onSubmit()}>
                 <Form.Field>
