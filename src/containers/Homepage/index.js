@@ -14,7 +14,8 @@ import {
   Segment,
   Visibility,
   Transition,
-  Sidebar
+  Sidebar,
+  Divider
 } from 'semantic-ui-react';
 import request from 'utils/request';
 import styled from 'styled-components';
@@ -361,6 +362,7 @@ const FixedMenu = (props) => (
         <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper">Whitepaper</Menu.Item>
         <Menu.Item as={ScrollLink} spy smooth offset={-120} to="token">Token</Menu.Item>
         <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap">Roadmap</Menu.Item>
+        <Menu.Item as={ScrollLink} spy smooth offset={-20} to="code">Code</Menu.Item>
         <Menu.Item to="/apply" as={Link} className="basic secondary">
           Buy Tokens
         </Menu.Item>
@@ -454,6 +456,7 @@ export default class HomepageLayout extends Component {
             <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper" onClick={this.toggleToc}>Whitepaper</Menu.Item>
             <Menu.Item as={ScrollLink} spy smooth offset={-110} to="token" onClick={this.toggleToc}>Token</Menu.Item>
             <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap" onClick={this.toggleToc}>Roadmap</Menu.Item>
+            <Menu.Item as={ScrollLink} spy smooth offset={-20} to="code" onClick={this.toggleToc}>Code</Menu.Item>
             <Menu.Item to="/apply" as={Link} className="basic secondary" onClick={this.toggleToc}>
               Buy Tokens
             </Menu.Item>
@@ -482,6 +485,7 @@ export default class HomepageLayout extends Component {
                       <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper">Whitepaper</Menu.Item>
                       <Menu.Item as={ScrollLink} spy smooth offset={-110} to="token">Token</Menu.Item>
                       <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap">Roadmap</Menu.Item>
+                      <Menu.Item as={ScrollLink} spy smooth offset={-20} to="code">Code</Menu.Item>
                       <Menu.Item to="/apply" as={Link} className="basic secondary">
                         Buy Tokens
                       </Menu.Item>
@@ -597,7 +601,6 @@ export default class HomepageLayout extends Component {
 
                       <p>
                         Once we have proved out the Moonfish MVP (see roadmap) it is the project’s intention to do a secondary token sale with tokens that have utility economics incorporated in the network.
-                        We may choose to convert or not convert Moonfish PoC Tokens into this sale depending on the legal and regulatory landscape.
                       </p>
                     </Element>
                   </Grid.Column>
@@ -684,6 +687,59 @@ export default class HomepageLayout extends Component {
               </PageSegment>
             </Element>
 
+
+            <PageSegment vertical inverted>
+              <Grid container stackable>
+                <Grid.Row centered>
+                  <Grid.Column width={8} textAlign="center">
+                    <Element name="code">
+                      <Header as="h2" style={{ color: '#fad500' }}>
+                        Source Code
+                      </Header>
+                      <br />
+                      <p>
+                        All source code for this token sale API, application and Whitepaper is freely available on Github:
+                      </p>
+                      <Divider hidden />
+                      <Button
+                        as="a"
+                        href="http://github.com/dominiek/moonfish-api"
+                        target="_blank"
+                        basic
+                        secondary
+                        size="large"
+                        style={{ textTransform: 'uppercase', marginRight: '1em', marginBottom: '1em' }}
+                        content="Moonfish API"
+                        icon="github"
+                      />
+                      <Button
+                        as="a"
+                        href="http://github.com/dominiek/moonfish-app"
+                        target="_blank"
+                        basic
+                        secondary
+                        size="large"
+                        style={{ textTransform: 'uppercase', marginRight: '1em', marginBottom: '1em' }}
+                        content="Moonfish App"
+                        icon="github"
+                      />
+                      <Button
+                        as="a"
+                        href="http://github.com/dominiek/moonfish-whitepaper"
+                        target="_blank"
+                        basic
+                        secondary
+                        size="large"
+                        style={{ textTransform: 'uppercase', marginRight: '1em', marginBottom: '1em' }}
+                        content="Moonfish Whitepaper"
+                        icon="github"
+                      />
+                    </Element>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </PageSegment>
+
             <Footer inverted vertical>
               <Container>
                 <Grid inverted stackable columns={3} textAlign="center">
@@ -694,11 +750,12 @@ export default class HomepageLayout extends Component {
                         <Menu.Item as={ScrollLink} spy smooth offset={-110} to="token">Token</Menu.Item>
                         <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper">Whitepaper</Menu.Item>
                         <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap">Roadmap</Menu.Item>
+                        <Menu.Item as={ScrollLink} spy smooth offset={-20} to="code">Code</Menu.Item>
                       </List>
                     </Grid.Column>
                     <Grid.Column>
                       <List link inverted>
-                        <List.Item as="a">Buy Tokens</List.Item>
+                        <List.Item as="a" href="/apply">Buy Tokens</List.Item>
                         <List.Item as="a">Privacy Policy</List.Item>
                         <List.Item as="a">Token Sale Terms</List.Item>
                         <List.Item as="a">Admin Login</List.Item>
