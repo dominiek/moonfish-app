@@ -78,6 +78,9 @@ module.exports = {
       test: /\.(eot|png|jpg|ttf|svg|gif)$/,
       use: ['file-loader']
     }, {
+      test: /\.(pdf)$/,
+      loader: 'file-loader?name=[name].[ext]&outputPath=downloads/&publicPath=downloads/'
+    }, {
       test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       loader: 'url-loader?limit=10000&minetype=application/font-woff'
     }]

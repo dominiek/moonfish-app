@@ -28,6 +28,7 @@ import iconPhase1 from 'assets/icon-phase1.svg';
 import iconPhase2 from 'assets/icon-phase2.svg';
 import iconPhase3 from 'assets/icon-phase3.svg';
 import iconPhase4 from 'assets/icon-phase4.svg';
+import whitepaperPdf from 'downloads/Moonfish_Draft.pdf';
 
 import TokenSaleSummary from 'components/TokenSaleSummary';
 
@@ -49,7 +50,7 @@ const Hero = styled.div`
     flex-direction: column;
     justify-content: center;
     z-index: 1;
-    padding-right: 50px;
+    padding-right: 40px;
   }
 
   .hero-line {
@@ -86,6 +87,58 @@ const Hero = styled.div`
       margin-bottom: 5px;
     }
   }
+
+  @media (max-width: 767px) {
+    .hero-wrap {
+      flex-direction: column;
+    }
+
+    .title-wrap {
+      text-align: center;
+      padding-right: 0;
+
+      h1 {
+        font-size: 2.875rem;
+      }
+    }
+
+    .hero-line {
+      height: 1px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title-wrap {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .token-sale-summary {
+      .ui.small.statistics .statistic > .value, .ui.small.statistic > .value {
+        font-size: 2em !important;
+      }
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    .token-sale-summary > div {
+      width: 320px;
+    }
+
+    .title-wrap {
+      padding-right: 20px;
+
+      h1 {
+        font-size: 2.875rem;
+      }
+    }
+  }
 `;
 
 const TopNav = styled(Menu)`
@@ -93,12 +146,28 @@ const TopNav = styled(Menu)`
 
     .menu {
       margin-top: 27px;
+
+      @media (max-width: 767px) {
+        margin-top: 0;
+      }
     }
 
     .menu .item {
       text-transform: uppercase;
       background: none;
       letter-spacing: 0.06em
+    }
+
+    .menu .item.logo img {
+      height: 80px;
+
+      @media (max-width: 480px) {
+        height: 50px;
+      }
+
+      @media (min-width: 481px) and (max-width: 767px) {
+        height: 60px;
+      }
     }
 
     .menu .item.button {
@@ -111,6 +180,27 @@ const TopNav = styled(Menu)`
     .menu .item.button:hover {
       background: #FBCE0E !important;
       color: #0B0B4E !important;
+    }
+
+    .menu.right .item {
+      @media(max-width: 991px) {
+        display: none;
+      }
+    }
+
+    .menu.right .item.toc {
+      border-bottom: 0;
+
+      @media(min-width: 992px) {
+        display: none;
+      }
+      @media(max-width: 991px) {
+        display: flex;
+      }
+
+      .icon {
+        font-size: 1.2em;
+      }
     }
   }
 `;
@@ -130,6 +220,25 @@ const PageSegment = styled(Segment)`
   &.ui.segment {
     background: #f2f6fc;
     padding: 100px 0;
+    font-size: 1.25rem;
+
+    @media (max-width: 480px) {
+      padding: 40px 10px;
+      font-size: 1.125rem;
+
+      .empty-column {
+        display: none;
+      }
+    }
+
+    @media (min-width: 481px) and (max-width: 767px) {
+      padding: 60px 10px;
+      font-size: 1.125rem;
+
+      .empty-column {
+        display: none;
+      }
+    }
   }
 
   &.ui.segment.inverted {
@@ -139,6 +248,14 @@ const PageSegment = styled(Segment)`
 
   .ui.header {
     color: #0B0B4E;
+  }
+
+  .moonfish-token {
+    margin: 0 auto;
+
+    @media (max-width: 767px) {
+      height: 180px;
+    }
   }
 `;
 
@@ -150,10 +267,41 @@ const Footer = styled(Segment)`
 
     .column {
       border-left: 1px solid rgba(255,255,255,0.3);
+
+      @media (max-width: 767px) {
+        border-left: 0;
+
+        .footer-logo {
+          height: 60px;
+        }
+
+        &:nth-child(1) {
+          order: 2;
+        }
+
+        &:nth-child(2) {
+          order: 3;
+        }
+
+        &:nth-child(3) {
+          order: 1;
+        }
+      }
+
+      @media (min-width: 768px) and (max-width: 991px) {
+        &:first-child {
+          border-left: 0;
+        }
+      }
     }
 
     .grid.column {
       border: 0;
+    }
+
+    .footer-logo {
+      height: 80px;
+      margin: 0 auto;
     }
 
     .link {
@@ -198,7 +346,7 @@ const Signature = styled.div`
   }
 `;
 
-const FixedMenu = () => (
+const FixedMenu = (props) => (
   <TopNavFixed fixed="top" inverted secondary>
     <Container>
       <Menu.Menu position="left">
@@ -209,17 +357,54 @@ const FixedMenu = () => (
         </Menu.Item>
       </Menu.Menu>
       <Menu.Menu position="right">
-        <Menu.Item as={ScrollLink} spy smooth offset={-140} to="about">About</Menu.Item>
-        <Menu.Item as={ScrollLink} spy smooth offset={-160} to="token">Token</Menu.Item>
-        <Menu.Item as={ScrollLink} spy smooth offset={-140} to="paper">Whitepaper</Menu.Item>
-        <Menu.Item as={ScrollLink} spy smooth offset={-60} to="roadmap">Roadmap</Menu.Item>
-        <Menu.Item to="/apply" as={Button} className="basic secondary">
+        <Menu.Item as={ScrollLink} spy smooth offset={-100} to="about">About</Menu.Item>
+        <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper">Whitepaper</Menu.Item>
+        <Menu.Item as={ScrollLink} spy smooth offset={-120} to="token">Token</Menu.Item>
+        <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap">Roadmap</Menu.Item>
+        <Menu.Item to="/apply" as={Link} className="basic secondary">
           Buy Tokens
+        </Menu.Item>
+        <Menu.Item className="toc" onClick={props.toggleToc}>
+          <Icon name="sidebar" /> Menu
         </Menu.Item>
       </Menu.Menu>
     </Container>
   </TopNavFixed>
 );
+
+const SidebarMenu = styled(Sidebar)`
+  &.sidebar.sidebar {
+    background: #000005;
+    border-left: 1px solid rgba(255,255,255,0.5);
+    text-align: center;
+
+    &.ui.vertical.inverted.menu.menu {
+      .item {
+        text-transform: uppercase;
+        border-radius: 3px !important;
+        background: none;
+        letter-spacing: 0.12em;
+        display: inline-block;
+        margin-bottom: 20px;
+        font-size: 14px;
+
+        &::before {
+          background: none;
+        }
+      }
+
+      .item.button {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .item.logo {
+        margin: 15px 0 10px 0;
+        border-bottom: 2px solid transparent;
+      }
+    }
+  }
+`;
 
 export default class HomepageLayout extends Component {
   state = {
@@ -255,23 +440,24 @@ export default class HomepageLayout extends Component {
     return (
       <div>
         <Transition.Group animation="fade down" duration={400}>
-          {visible && <FixedMenu />}
+          {visible && <FixedMenu toggleToc={this.toggleToc} />}
         </Transition.Group>
+
         <Sidebar.Pushable>
-          <Sidebar as={Menu} visible={sidebarVisible} direction="right" width="thin" animation="push" vertical inverted>
+          <SidebarMenu as={Menu} visible={sidebarVisible} direction="right" width="thin" animation="push" vertical inverted>
             <Menu.Item className="logo">
-              <Link to="/">
-                <img src={logo} alt="Moonfish Logo" style={{ height: '80px' }} />
+              <Link to="/" onClick={this.toggleToc}>
+                <img src={fish} alt="Moonfish" style={{ height: '60px' }} />
               </Link>
             </Menu.Item>
-            <Menu.Item as={ScrollLink} spy smooth offset={-140} to="about">About</Menu.Item>
-            <Menu.Item as={ScrollLink} spy smooth offset={-160} to="token">Token</Menu.Item>
-            <Menu.Item as={ScrollLink} spy smooth offset={-140} to="paper">Whitepaper</Menu.Item>
-            <Menu.Item as={ScrollLink} spy smooth offset={-60} to="roadmap">Roadmap</Menu.Item>
-            <Menu.Item to="/apply" as={Button} className="basic secondary">
+            <Menu.Item as={ScrollLink} spy smooth offset={-100} to="about" onClick={this.toggleToc}>About</Menu.Item>
+            <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper" onClick={this.toggleToc}>Whitepaper</Menu.Item>
+            <Menu.Item as={ScrollLink} spy smooth offset={-110} to="token" onClick={this.toggleToc}>Token</Menu.Item>
+            <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap" onClick={this.toggleToc}>Roadmap</Menu.Item>
+            <Menu.Item to="/apply" as={Link} className="basic secondary" onClick={this.toggleToc}>
               Buy Tokens
             </Menu.Item>
-          </Sidebar>
+          </SidebarMenu>
           <Sidebar.Pusher>
 
             <Visibility
@@ -287,16 +473,16 @@ export default class HomepageLayout extends Component {
                     <Menu.Menu position="left">
                       <Menu.Item className="logo">
                         <Link to="/">
-                          <Image src={fish} alt="Moonfish Fish" style={{ height: '80px' }} />
+                          <Image src={fish} alt="Moonfish Fish" />
                         </Link>
                       </Menu.Item>
                     </Menu.Menu>
                     <Menu.Menu position="right">
-                      <Menu.Item as={ScrollLink} smooth offset={-100} to="about">About</Menu.Item>
-                      <Menu.Item as={ScrollLink} smooth offset={-100} to="token">Token</Menu.Item>
-                      <Menu.Item as={ScrollLink} smooth to="paper">Whitepaper</Menu.Item>
-                      <Menu.Item as={ScrollLink} smooth offset={-80} to="roadmap">Roadmap</Menu.Item>
-                      <Menu.Item to="/apply" as={Button} className="basic secondary">
+                      <Menu.Item as={ScrollLink} spy smooth offset={-100} to="about">About</Menu.Item>
+                      <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper">Whitepaper</Menu.Item>
+                      <Menu.Item as={ScrollLink} spy smooth offset={-110} to="token">Token</Menu.Item>
+                      <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap">Roadmap</Menu.Item>
+                      <Menu.Item to="/apply" as={Link} className="basic secondary">
                         Buy Tokens
                       </Menu.Item>
                       <Menu.Item className="toc" onClick={this.toggleToc}>
@@ -332,11 +518,11 @@ export default class HomepageLayout extends Component {
 
             <PageSegment vertical>
               <Element name="about">
-                <Grid container stackable centered style={{ fontSize: '1.25rem' }}>
+                <Grid container stackable centered>
                   <Grid.Row>
                     <Grid.Column width={10}>
                       <Header as="h2" style={{ textTransform: 'uppercase', textAlign: 'center' }}>
-                        <span style={{ display: 'block', fontSize: '1.2rem', lineHeight: '2rem' }}>Introducing</span>
+                        <span style={{ display: 'block', lineHeight: '2rem', fontSize: '1.2rem' }}>Introducing</span>
                         Moonfish
                       </Header>
                       <p>
@@ -361,36 +547,23 @@ export default class HomepageLayout extends Component {
             </PageSegment>
 
             <PageSegment vertical inverted>
-              <Grid container stackable style={{ fontSize: '1.25rem' }}>
-                <Grid.Row>
-                  <Grid.Column width={8}>
-                    <Element name="token">
+              <Grid container stackable>
+                <Grid.Row centered>
+                  <Grid.Column width={8} textAlign="center">
+                    <Element name="paper">
                       <Header as="h2" style={{ color: '#fad500' }}>
-                        MOONFISH PoC Tokens
+                        Whitepaper
                       </Header>
+                      <br />
                       <p>
-                      Large single round token sales often create a time mismatch between developer's rewards and token buyers' interests.
-                      A better model is to raise funds at multiple rounds after product market traction is proven.
+                        Read about the MOONFISH platform in our draft whitepaper.
                       </p>
-                      <p>
-                        We will do a very limited first PoC round of Moonfish PoC tokens.
-                      </p>
-                      <p>
-                        <b>The goal of this token sale is twofold:</b>
-                      </p>
-                      <ol style={{ lineHeight: '1.4285em' }}>
-                        <li>
-                        Proof out that we can do a token sale with the Moonfish software (ICO the ICO software if you will);
-                          <br /><br />
-                        </li>
-                        <li>
-                        Get some modest funding in place to support the development efforts of the project.
-                        </li>
-                      </ol>
+                      <br />
+                      <Button as="a" href={whitepaperPdf} target="_blank" basic secondary size="large" style={{ textTransform: 'uppercase' }}>
+                        Download Whitepaper&nbsp;&nbsp;
+                        <Icon name="down arrow" style={{ marginRight: '0' }} />
+                      </Button>
                     </Element>
-                  </Grid.Column>
-                  <Grid.Column verticalAlign="middle" width={8}>
-                    <Image src={moonfishToken} alt="Moonfish PoC Token" style={{ margin: '0 auto' }} />
                   </Grid.Column>
                 </Grid.Row>
                 <hr
@@ -401,20 +574,35 @@ export default class HomepageLayout extends Component {
                     borderBottom: '0'
                   }}
                 />
-                <Grid.Row centered>
-                  <Grid.Column width={6} textAlign="center">
-                    <Element name="paper">
+                <Grid.Row>
+                  <Grid.Column width={8}>
+                    <Element name="token">
                       <Header as="h2" style={{ color: '#fad500' }}>
-                        Whitepaper
+                        MOONFISH PoC Tokens
                       </Header>
-                      <br />
-                      <p>Read about MOONFISH business idea and technical implementations of the project.</p>
-                      <br />
-                      <Button as={Link} to="" basic secondary size="large" style={{ textTransform: 'uppercase' }}>
-                        Download Whitepaper&nbsp;&nbsp;
-                        <Icon name="down arrow" style={{ marginRight: '0' }} />
-                      </Button>
+                      <p>
+                        We are planning a small initial token pre-sale for Moonfish.
+                        The goal of this “Moonfish PoC Token Micro-Sale” is twofold:
+                        1. Prove out that we can do a token sale with the Moonfish software (ICO the ICO software if you will);
+                        2. Get some modest funding in place to support the development efforts of the project.
+                      </p>
+
+                      <p>
+                        <i>
+                          Disclaimer: The core Moonfish platform is open source and will remain open source.
+                          These Moonfish PoC tokens will have no economic return or value.
+                          They are a thank you token received upon giving a donation.
+                        </i>
+                      </p>
+
+                      <p>
+                        Once we have proved out the Moonfish MVP (see roadmap) it is the project’s intention to do a secondary token sale with tokens that have utility economics incorporated in the network.
+                        We may choose to convert or not convert Moonfish PoC Tokens into this sale depending on the legal and regulatory landscape.
+                      </p>
                     </Element>
+                  </Grid.Column>
+                  <Grid.Column verticalAlign="middle" width={8}>
+                    <Image src={moonfishToken} alt="Moonfish PoC Token" className="moonfish-token" />
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
@@ -422,7 +610,7 @@ export default class HomepageLayout extends Component {
 
             <Element name="roadmap">
               <PageSegment vertical>
-                <Grid container stackable verticalAlign="middle" style={{ fontSize: '1.25rem' }}>
+                <Grid container stackable verticalAlign="middle">
                   <Grid.Row>
                     <Grid.Column width={5} />
                     <Grid.Column width={9}>
@@ -432,7 +620,7 @@ export default class HomepageLayout extends Component {
                     </Grid.Column>
                   </Grid.Row>
                   <Grid.Row>
-                    <Grid.Column width={1} />
+                    <Grid.Column width={1} className="empty-column" />
                     <Grid.Column width={4} verticalAlign="middle">
                       <Image src={iconPhase1} alt="Phase 1" style={{ height: '90px', margin: '0 auto' }} />
                     </Grid.Column>
@@ -447,7 +635,7 @@ export default class HomepageLayout extends Component {
                     </Grid.Column>
                   </Grid.Row>
                   <Grid.Row>
-                    <Grid.Column width={1} />
+                    <Grid.Column width={1} className="empty-column" />
                     <Grid.Column width={4} verticalAlign="middle">
                       <Image src={iconPhase2} alt="Phase 2" style={{ height: '80px', margin: '0 auto' }} />
                     </Grid.Column>
@@ -462,7 +650,7 @@ export default class HomepageLayout extends Component {
                     </Grid.Column>
                   </Grid.Row>
                   <Grid.Row>
-                    <Grid.Column width={1} />
+                    <Grid.Column width={1} className="empty-column" />
                     <Grid.Column width={4} verticalAlign="middle">
                       <Image src={iconPhase3} alt="Phase 3" style={{ height: '100px', margin: '0 auto' }} />
                     </Grid.Column>
@@ -477,7 +665,7 @@ export default class HomepageLayout extends Component {
                     </Grid.Column>
                   </Grid.Row>
                   <Grid.Row>
-                    <Grid.Column width={1} />
+                    <Grid.Column width={1} className="empty-column" />
                     <Grid.Column width={4} verticalAlign="middle">
                       <Image src={iconPhase4} alt="Phase 4" style={{ height: '100px', margin: '0 auto' }} />
                     </Grid.Column>
@@ -502,11 +690,10 @@ export default class HomepageLayout extends Component {
                   <Grid.Row stretched>
                     <Grid.Column>
                       <List link inverted>
-                        <List.Item as={ScrollLink} spy smooth offset={-140} to="about">About</List.Item>
-                        <List.Item as={ScrollLink} spy smooth offset={-160} to="token">Token</List.Item>
-                        <List.Item as={ScrollLink} spy smooth offset={-140} to="paper">Whitepaper</List.Item>
-                        <List.Item as={ScrollLink} spy smooth offset={-60} to="roadmap">Roadmap</List.Item>
-                        <List.Item as="a">Team</List.Item>
+                        <Menu.Item as={ScrollLink} spy smooth offset={-100} to="about">About</Menu.Item>
+                        <Menu.Item as={ScrollLink} spy smooth offset={-110} to="token">Token</Menu.Item>
+                        <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper">Whitepaper</Menu.Item>
+                        <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap">Roadmap</Menu.Item>
                       </List>
                     </Grid.Column>
                     <Grid.Column>
@@ -518,7 +705,7 @@ export default class HomepageLayout extends Component {
                       </List>
                     </Grid.Column>
                     <Grid.Column>
-                      <Image src={logo} alt="Moonfish Logo" style={{ height: '80px', margin: '0 auto' }} />
+                      <Image src={logo} alt="Moonfish Logo" className="footer-logo" />
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
