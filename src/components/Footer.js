@@ -19,10 +19,41 @@ const FooterSegment = styled(Segment)`
 
     .column {
       border-left: 1px solid rgba(255,255,255,0.3);
+
+      @media (max-width: 767px) {
+        border-left: 0;
+
+        .footer-logo {
+          height: 60px;
+        }
+
+        &:nth-child(1) {
+          order: 2;
+        }
+
+        &:nth-child(2) {
+          order: 3;
+        }
+
+        &:nth-child(3) {
+          order: 1;
+        }
+      }
+
+      @media (min-width: 768px) and (max-width: 991px) {
+        &:first-child {
+          border-left: 0;
+        }
+      }
     }
 
     .grid.column {
       border: 0;
+    }
+
+    .footer-logo {
+      height: 80px;
+      margin: 0 auto;
     }
 
     .link {
@@ -36,7 +67,6 @@ const FooterSegment = styled(Segment)`
         line-height: 1.75rem;
       }
     }
-
   }
 `;
 
