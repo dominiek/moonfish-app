@@ -16,6 +16,9 @@ const plugins = [
     minChunks: Infinity,
     filename: 'vendor-[hash].js',
   }),
+  new webpack.ProvidePlugin({
+    fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+  }),
   new webpack.DefinePlugin({
     ENV: JSON.stringify(ENV),
     PRODUCTION_HOSTNAME: JSON.stringify('production.com'),
