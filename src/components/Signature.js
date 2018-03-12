@@ -11,7 +11,7 @@ import fish from 'assets/moonfish-fish.svg';
 
 const Wrap = styled.div`
   background: #000005;
-  border-top: 1px solid rgba(255,255,255,0.3);
+  border-top: 1px solid rgba(255,255,255,0.2);
   padding: 30px 0;
   text-align: center;
   color: #fff;
