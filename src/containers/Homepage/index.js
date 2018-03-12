@@ -9,7 +9,6 @@ import {
   Icon,
   Image,
   Message,
-  List,
   Menu,
   Segment,
   Visibility,
@@ -31,6 +30,8 @@ import iconPhase3 from 'assets/icon-phase3.svg';
 import iconPhase4 from 'assets/icon-phase4.svg';
 import whitepaperPdf from 'downloads/Moonfish_Draft.pdf';
 
+import Footer from 'components/Footer';
+import Signature from 'components/Signature';
 import TokenSaleSummary from 'components/TokenSaleSummary';
 
 const Hero = styled.div`
@@ -257,93 +258,6 @@ const PageSegment = styled(Segment)`
     @media (max-width: 767px) {
       height: 180px;
     }
-  }
-`;
-
-const Footer = styled(Segment)`
-  &.ui.segment.inverted {
-    background: #000005;
-    background: linear-gradient(45deg, #000005 0%,#050520 100%);
-    padding: 50px 0;
-
-    .column {
-      border-left: 1px solid rgba(255,255,255,0.3);
-
-      @media (max-width: 767px) {
-        border-left: 0;
-
-        .footer-logo {
-          height: 60px;
-        }
-
-        &:nth-child(1) {
-          order: 2;
-        }
-
-        &:nth-child(2) {
-          order: 3;
-        }
-
-        &:nth-child(3) {
-          order: 1;
-        }
-      }
-
-      @media (min-width: 768px) and (max-width: 991px) {
-        &:first-child {
-          border-left: 0;
-        }
-      }
-    }
-
-    .grid.column {
-      border: 0;
-    }
-
-    .footer-logo {
-      height: 80px;
-      margin: 0 auto;
-    }
-
-    .link {
-      text-transform: uppercase;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      a {
-        color: rgba(255,255,255,0.7);
-        line-height: 1.75rem;
-      }
-    }
-
-  }
-`;
-
-const Signature = styled.div`
-  background: #000005;
-  border-top: 1px solid rgba(255,255,255,0.3);
-  padding: 30px 0;
-  text-align: center;
-  color: #fff;
-  letter-spacing: 0.1em;
-  font-size: 14px;
-
-  span {
-    color: #FBCE0E;
-    text-transform: uppercase;
-  }
-
-  a {
-    color: #FBCE0E;
-    font-weight: 900;
-    text-decoration: underline;
-  }
-
-  .ui.image {
-    height: 30px;
-    display: inline-block;
-    margin-right: 20px;
   }
 `;
 
@@ -686,8 +600,6 @@ export default class HomepageLayout extends Component {
                 </Grid>
               </PageSegment>
             </Element>
-
-
             <PageSegment vertical inverted>
               <Grid container stackable>
                 <Grid.Row centered>
@@ -740,44 +652,8 @@ export default class HomepageLayout extends Component {
               </Grid>
             </PageSegment>
 
-            <Footer inverted vertical>
-              <Container>
-                <Grid inverted stackable columns={3} textAlign="center">
-                  <Grid.Row stretched>
-                    <Grid.Column>
-                      <List link inverted>
-                        <Menu.Item as={ScrollLink} spy smooth offset={-100} to="about">About</Menu.Item>
-                        <Menu.Item as={ScrollLink} spy smooth offset={-110} to="token">Token</Menu.Item>
-                        <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper">Whitepaper</Menu.Item>
-                        <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap">Roadmap</Menu.Item>
-                        <Menu.Item as={ScrollLink} spy smooth offset={-20} to="code">Code</Menu.Item>
-                      </List>
-                    </Grid.Column>
-                    <Grid.Column>
-                      <List link inverted>
-                        <List.Item as="a" href="/apply">Buy Tokens</List.Item>
-                        <List.Item as="a">Privacy Policy</List.Item>
-                        <List.Item as="a">Token Sale Terms</List.Item>
-                        <List.Item as="a">Admin Login</List.Item>
-                      </List>
-                    </Grid.Column>
-                    <Grid.Column>
-                      <Image src={logo} alt="Moonfish Logo" className="footer-logo" />
-                    </Grid.Column>
-                  </Grid.Row>
-                </Grid>
-              </Container>
-            </Footer>
-
-            <Signature>
-              <Container>
-                <Image src={fish} alt="Moonfish Fish" />
-                <b>
-                  <span>Created with <Link as="a" to="/">Moonfish</Link></span> &mdash;
-                  This Token Sale experience was built using Moonfish.
-                </b>
-              </Container>
-            </Signature>
+            <Footer />
+            <Signature />
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>

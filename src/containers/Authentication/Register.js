@@ -17,11 +17,11 @@ import { saveSessionToken, getSessionToken, hasSession } from 'utils/authenticat
 
 import fish from 'assets/moonfish-fish.svg';
 
-const getMagicToken = (props) => {
+const getToken = (props) => {
   const { location } = props;
   const { search } = location;
   if (!search || !search.length) return null;
-  const md = search.match(/magicToken=([^&]+)$/);
+  const md = search.match(/token=([^&]+)$/);
   if (!md || !md[1]) return null;
   return md[1];
 };
@@ -47,7 +47,7 @@ export default class Register extends Component {
     };
   }
   componentDidMount() {
-    this.authenticateWithMagicToken();
+    this.authenticateWithToken();
   }
   onSubmit() {
     const { params } = this.state;
@@ -67,20 +67,20 @@ export default class Register extends Component {
     params[field] = value;
     this.setState({ params });
   }
-  authenticateWithMagicToken() {
-    const magicToken = getMagicToken(this.props);
-    if (!magicToken && !hasSession()) {
+  authenticateWithToken() {
+    const token = getToken(this.props);
+    if (!token && !hasSession()) {
       return this.setState({
-        fatalError: new Error('No magic token or session detected'),
+        fatalError: new Error('No token or session detected'),
         loading: false,
       });
     }
-    if (magicToken) {
+    if (token) {
       request({
         method: 'POST',
         path: '/1/applicants/sessions',
         body: {
-          magicToken
+          token
         }
       })
         .then((result) => {
