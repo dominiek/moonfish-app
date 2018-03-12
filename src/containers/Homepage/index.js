@@ -28,6 +28,7 @@ import iconPhase1 from 'assets/icon-phase1.svg';
 import iconPhase2 from 'assets/icon-phase2.svg';
 import iconPhase3 from 'assets/icon-phase3.svg';
 import iconPhase4 from 'assets/icon-phase4.svg';
+import whitepaperPdf from 'downloads/Moonfish_Draft.pdf';
 
 import TokenSaleSummary from 'components/TokenSaleSummary';
 
@@ -595,7 +596,7 @@ export default class HomepageLayout extends Component {
                       <br />
                       <p>Read about MOONFISH business idea and technical implementations of the project.</p>
                       <br />
-                      <Button as={Link} to="" basic secondary size="large" style={{ textTransform: 'uppercase' }}>
+                      <Button as="a" href={whitepaperPdf} target="_blank" basic secondary size="large" style={{ textTransform: 'uppercase' }}>
                         Download Whitepaper&nbsp;&nbsp;
                         <Icon name="down arrow" style={{ marginRight: '0' }} />
                       </Button>
