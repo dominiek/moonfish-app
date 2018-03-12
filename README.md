@@ -40,10 +40,11 @@ UI is running at [http://localhost:1305/](http://localhost:1305/)
 - [x] Add basic whitelisting apply flow
 - [x] Add basic applicant magic token login
 - [x] Add basic KYC step and registration finalization
+- [x] Add scrolling to homepage
+- [x] Add [WebGL background](https://tympanus.net/Development/DecorativeBackgrounds/index2.html)
+- [ ] Fix countdown timezone (GMT time is not localized correctly)
+- [ ] Add secret keyphrase for every user
 - [ ] Indicate when whitelist is oversubscribed but still accepting applications
 - [ ] Anti-fishing aides
-- [ ] Add scrolling to homepage
 - [ ] Add legal templates
-- [ ] Add secret keyphrase for every user
 - [ ] Add security recommendations to all the flow
-- [ ] Add [WebGL background](https://tympanus.net/Development/DecorativeBackgrounds/index2.html)
