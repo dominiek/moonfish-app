@@ -455,8 +455,9 @@ export default class HomepageLayout extends Component {
                       </p>
 
                       <p>
-                        All core Moonfish code is free, open source and publicly audit-able.
-                        The Moonfish platform codifies the latest legal, technical and security best practice in a single end-to-end solution for token sale processes.
+                        The first version of Moonfish is an open source software that can be audited, configured and deployed by any software developer.
+                        This solves the imminent need for secure, open, standardized and reliable token sale software.
+                        However, it is the long term goal of the Moonfish project to create a blockchain-powered network that provides a comprehensive ecosystem for token sales.
                       </p>
                     </Grid.Column>
                   </Grid.Row>
