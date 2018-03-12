@@ -8,6 +8,8 @@ import {
   Segment,
 } from 'semantic-ui-react';
 
+import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
 import logo from 'assets/moonfish-logo.svg';
 
@@ -79,11 +81,11 @@ export default class Footer extends React.Component {
             <Grid.Row stretched>
               <Grid.Column>
                 <List link inverted>
-                  <List.Item as="a">About</List.Item>
-                  <List.Item as="a">Token</List.Item>
-                  <List.Item as="a">Whitepaper</List.Item>
-                  <List.Item as="a">Roadmap</List.Item>
-                  <List.Item as="a">Team</List.Item>
+                  <List.Item as={Link} to="/#about">About</List.Item>
+                  <List.Item as={Link} to="/#token">Token</List.Item>
+                  <List.Item as={Link} to="/#paper">Whitepaper</List.Item>
+                  <List.Item as={Link} to="/#roadmap">Roadmap</List.Item>
+                  <List.Item as={Link} to="/#code">Code</List.Item>
                 </List>
               </Grid.Column>
               <Grid.Column>
