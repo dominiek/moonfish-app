@@ -45,6 +45,8 @@ UI is running at [http://localhost:1305/](http://localhost:1305/)
 - [x] Add secret keyphrase for every user
 - [x] Indicate when whitelist is oversubscribed but still accepting applications
 - [ ] Fix countdown timezone (GMT time is not localized correctly)
+- [ ] Fix countdown showing 00 when page loads
+- [ ] Make content more centrally configurable
+- [ ] Tweak legal templates
 - [ ] Anti-fishing aides
-- [ ] Add legal templates
 - [ ] Add security recommendations to all the flow
