@@ -85,7 +85,7 @@ export default class Apply extends Component {
                   size="large"
                   content="Register"
                   loading={loading}
-                  onClick={() => this.onSubmit()}
+                  submit
                 />
               </Form>
             ) }
