@@ -6,6 +6,8 @@ import AdminLogout from './AdminLogout';
 import Apply from './Apply';
 import Register from './Register';
 import EndSession from './EndSession';
+import PrivacyPolicy from './PrivacyPolicy';
+import TokenSaleTerms from './TokenSaleTerms';
 
 export default () => (
   <Switch>
@@ -14,5 +16,7 @@ export default () => (
     <Route path="/apply" component={Apply} />
     <Route path="/register" component={Register} />
     <Route path="/end-session" component={EndSession} />
+    <Route path="/privacy" component={PrivacyPolicy} />
+    <Route path="/terms" component={TokenSaleTerms} />
   </Switch>
 );

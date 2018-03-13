@@ -9,7 +9,7 @@ export default (props) => (
       centered
       verticalAlign="middle"
     >
-      <Grid.Column style={{ maxWidth: '500px', margin: '40px 0' }}>
+      <Grid.Column style={{ maxWidth: props.maxWidth || '500px', margin: '40px 0' }}>
         { props.children }
       </Grid.Column>
     </Grid>

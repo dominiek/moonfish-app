@@ -90,9 +90,9 @@ export default class Footer extends React.Component {
               </Grid.Column>
               <Grid.Column>
                 <List link inverted>
-                  <List.Item as="a">Buy Tokens</List.Item>
-                  <List.Item as="a">Privacy Policy</List.Item>
-                  <List.Item as="a">Token Sale Terms</List.Item>
+                  <List.Item as={Link} to="/apply">Buy Tokens</List.Item>
+                  <List.Item as={Link} to="/privacy">Privacy Policy</List.Item>
+                  <List.Item as={Link} to="/terms">Token Sale Terms</List.Item>
                   <List.Item as="a">Admin Login</List.Item>
                 </List>
               </Grid.Column>

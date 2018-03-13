@@ -157,13 +157,13 @@ export default class Register extends Component {
               <Form.Field>
                 <Checkbox
                   onChange={(e, props) => this.setParams('acceptWhitepaper', props.checked)}
-                  label={(<label>I confirm that I have read and understood the <a href="" target="_blank">Moonfish whitepaper</a></label>)}
+                  label={(<label>I confirm that I have read and understood the <a href="/downloads/Moonfish_Draft.pdf" target="_blank">Moonfish whitepaper</a></label>)}
                 />
               </Form.Field>
               <Form.Field>
                 <Checkbox
                   onChange={(e, props) => this.setParams('acceptTerms', props.checked)}
-                  label={(<label>I confirm that I have read and understood the <a href="" target="_blank">Token Sale Terms</a> and <a href="" target="_blank">Privacy Policy</a></label>)}
+                  label={(<label>I confirm that I have read and understood the <a href="/terms" target="_blank">Token Sale Terms</a> and <a href="/privacy" target="_blank">Privacy Policy</a></label>)}
                 />
               </Form.Field>
               <Form.Field>
