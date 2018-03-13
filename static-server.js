@@ -9,9 +9,6 @@ const app = express();
 const PORT = 1305;
 const HOST = '0.0.0.0';
 
-app.use(compression());
-app.use(express.static('dist'));
-
 if (process.env.REDIRECT_TO_HTTPS) {
   console.log('Redirecting all non-HTTPS traffic to HTTPS');
   app.use((req, res, next) => {
@@ -25,6 +22,9 @@ if (process.env.REDIRECT_TO_HTTPS) {
     return next();
   });
 }
+
+app.use(compression());
+app.use(express.static('dist'));
 
 app.get('*', (req, res) => {
   res.send(indexTemplate);
