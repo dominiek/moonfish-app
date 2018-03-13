@@ -1,12 +1,13 @@
 {
-  "name": "blockchain-ico-tokensale-app",
-  "version": "1.0.0",
-  "description": "",
+  "name": "moonfish-app",
+  "version": "0.1.0",
+  "description": "Open Software for Token Distribution",
   "license": "MIT",
   "scripts": {
     "build": "rm -rf ./dist && webpack -p",
     "start": "webpack-dev-server --hot --port 1305",
     "lint": "eslint src",
+    "static": "node static-server.js",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -50,7 +51,9 @@
     "styled-components": "^3.1.6",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "express": "^4.16.2",
+    "compression": "^1.7.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

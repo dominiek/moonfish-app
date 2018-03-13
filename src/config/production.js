@@ -1,1 +1,4 @@
-export default {};
+export default {
+  apiRoot: 'https://api.moonfish.one',
+  name: 'Moonfish',
+};
