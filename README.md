@@ -44,6 +44,14 @@ UI is running at [http://localhost:1305/](http://localhost:1305/)
 - [x] Add [WebGL background](https://tympanus.net/Development/DecorativeBackgrounds/index2.html)
 - [x] Add secret keyphrase for every user
 - [x] Indicate when whitelist is oversubscribed but still accepting applications
+- [ ] Admin: Allow app to run in admin mode which makes admin functionality available
+- [ ] Admin: login and logout
+- [ ] Admin: Top-level nav: Overview | Applicants | Settings
+- [ ] Admin: Overview section shows KPIs (how many applicants, total amount soft circled)
+- [ ] Admin: Applicants section shows table of applicants with filters
+- [ ] Admin: Applicants section: Allow bulk selection of applicants, allow deletion of applicants
+- [ ] Admin: Applicants section: Have an "invite to participate" action for a selection of users
+- [ ] Admin: Settings section should allow editing of tokenSale settings
 - [ ] Fix countdown timezone (GMT time is not localized correctly)
 - [ ] Fix countdown showing 00 when page loads
 - [ ] Make content more centrally configurable
