@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { clearSessionToken } from 'utils/authentication';
 import PageLoader from 'components/PageLoader';
 
-export default class Logout extends Component {
+export default class Logout extends React.Component {
   componentDidMount() {
     clearSessionToken();
     document.location.href = '/';

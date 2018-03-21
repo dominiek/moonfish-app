@@ -30,9 +30,9 @@ import iconPhase3 from 'assets/icon-phase3.svg';
 import iconPhase4 from 'assets/icon-phase4.svg';
 import whitepaperPdf from 'downloads/Moonfish_Draft.pdf';
 
-import Footer from 'components/Footer';
-import Signature from 'components/Signature';
-import TokenSaleSummary from 'components/TokenSaleSummary';
+import Footer from './Footer';
+import Signature from './Signature';
+import TokenSaleSummary from './TokenSaleSummary';
 
 const Hero = styled.div`
   background: #000005;
@@ -262,6 +262,18 @@ const PageSegment = styled(Segment)`
   }
 `;
 
+const ContentMenu = () => {
+  return (
+    <React.Fragment>
+      <Menu.Item as={ScrollLink} spy smooth offset={-100} to="about">About</Menu.Item>
+      <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper">Whitepaper</Menu.Item>
+      <Menu.Item as={ScrollLink} spy smooth offset={-120} to="token">Token</Menu.Item>
+      <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap">Roadmap</Menu.Item>
+      <Menu.Item as={ScrollLink} spy smooth offset={-20} to="code">Code</Menu.Item>
+    </React.Fragment>
+  );
+};
+
 const FixedMenu = (props) => (
   <TopNavFixed fixed="top" inverted secondary>
     <Container>
@@ -273,11 +285,7 @@ const FixedMenu = (props) => (
         </Menu.Item>
       </Menu.Menu>
       <Menu.Menu position="right">
-        <Menu.Item as={ScrollLink} spy smooth offset={-100} to="about">About</Menu.Item>
-        <Menu.Item as={ScrollLink} spy smooth offset={-100} to="paper">Whitepaper</Menu.Item>
-        <Menu.Item as={ScrollLink} spy smooth offset={-120} to="token">Token</Menu.Item>
-        <Menu.Item as={ScrollLink} spy smooth offset={-20} to="roadmap">Roadmap</Menu.Item>
-        <Menu.Item as={ScrollLink} spy smooth offset={-20} to="code">Code</Menu.Item>
+        <ContentMenu />
         <Menu.Item>
           <Button to="/apply" as={Link} className="basic secondary">
             Buy Tokens
@@ -339,7 +347,7 @@ export default class HomepageLayout extends Component {
   componentDidMount() {
     request({
       method: 'GET',
-      path: '/1/info',
+      path: '/1/status',
     })
       .then(info => this.setState({ info }))
       .catch(error => this.setState({ error }));
@@ -664,7 +672,9 @@ export default class HomepageLayout extends Component {
               </Grid>
             </PageSegment>
 
-            <Footer />
+            <Footer>
+              <ContentMenu />
+            </Footer>
             <Signature />
           </Sidebar.Pusher>
         </Sidebar.Pushable>

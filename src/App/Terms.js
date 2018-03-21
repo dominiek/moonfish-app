@@ -10,15 +10,15 @@ import PageCenter from 'components/PageCenter';
 import fish from 'assets/moonfish-fish.svg';
 import { fillInVars } from 'utils/templates';
 
-import markdownSource from 'templates/privacy_policy.md';
+import markdownSource from 'templates/sale-terms.md';
 
-export default class PrivacyPolicy extends Component {
+export default class TokenSaleTerms extends Component {
   render() {
     return (
       <PageCenter maxWidth="1000px">
         <Image src={fish} alt="Moonfish" style={{ height: '80px', margin: '0 auto' }} />
         <Header as="h3" textAlign="center" style={{ color: '#FBCE0E', textTransform: 'uppercase' }}>
-          Privacy Policy
+          Token Sale Terms
         </Header>
         <Segment.Group>
           <Segment padded>

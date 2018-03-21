@@ -21,11 +21,11 @@ const renderActive = () => {
   );
 };
 
-const renderWhitelist = (details) => {
+const renderWhitelist = (status) => {
   return (
     <div>
       <h5>Token Sale Starting In</h5>
-      <Countdown date={details.startTimeTs} />
+      <Countdown date={status.startTS} />
       <Divider hidden />
       <Button as={Link} to="/apply" basic secondary size="large" style={{ textTransform: 'uppercase' }}>
         Apply for Whitelist
@@ -44,9 +44,9 @@ const renderEnded = () => {
   );
 };
 
-const renderSummary = ({ details, status }) => {
+const renderSummary = (status) => {
   if (status.isActive) return renderActive();
-  if (status.acceptApplicants) return renderWhitelist(details);
+  if (status.acceptApplicants) return renderWhitelist(status);
   return renderEnded();
 };
 
