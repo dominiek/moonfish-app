@@ -87,7 +87,7 @@ export default class Register extends Component {
     if (status.type === 'request') return <Loader />;
     if (status.type === 'failure') return <RestartError error={status.error} />;
 
-    const initialValues = applicant ? {
+    const initialValues = applicant.completedRegistration ? {
       ...checkboxFields.reduce((res, key) => {
         res[key] = true;
         return res;

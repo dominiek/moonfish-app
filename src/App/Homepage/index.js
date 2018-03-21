@@ -28,7 +28,7 @@ import iconPhase1 from 'assets/icon-phase1.svg';
 import iconPhase2 from 'assets/icon-phase2.svg';
 import iconPhase3 from 'assets/icon-phase3.svg';
 import iconPhase4 from 'assets/icon-phase4.svg';
-import whitepaperPdf from 'downloads/Moonfish_Draft.pdf';
+import whitepaperPdf from 'downloads/moonfish-draft.pdf';
 
 import Footer from './Footer';
 import Signature from './Signature';
