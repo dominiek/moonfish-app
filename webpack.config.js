@@ -4,18 +4,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const extractLess = new ExtractTextPlugin({
-  filename: '[name]-[contenthash].css'
+  filename: '[name]-[hash].css'
 });
 
 const isProduction = process.argv.indexOf('-p') >= 0;
 const ENV = isProduction ? 'production' : 'development';
 
 const plugins = [
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendor',
-    minChunks: Infinity,
-    filename: 'vendor-[hash].js',
-  }),
   new webpack.ProvidePlugin({
     fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
   }),
