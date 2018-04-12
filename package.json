@@ -5,11 +5,12 @@
   "license": "MIT",
   "scripts": {
     "build": "rm -rf ./dist && webpack -p",
-    "start": "webpack-dev-server --hot --port 1305",
+    "start": "node ./serve",
+    "static": "node ./serve-static",
     "lint": "eslint src",
-    "static": "node static-server.js",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -23,6 +24,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "compression": "^1.7.1",
+    "connect-history-api-fallback": "^1.5.0",
     "css-loader": "^0.28.8",
     "exports-loader": "^0.7.0",
     "express": "^4.16.2",
@@ -32,6 +34,10 @@
     "history": "^4.7.2",
     "html-webpack-plugin": "^3.2.0",
     "imports-loader": "^0.8.0",
+    "koa": "^2.5.0",
+    "koa-compress": "^2.0.0",
+    "koa-connect": "^2.0.1",
+    "koa-static": "^4.0.2",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "lodash": "^4.17.5",
@@ -61,11 +67,13 @@
     "babel-eslint": "^8.2.1",
     "eslint": "^4.17.0",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.6.1",
     "jest": "^22.1.2",
+    "koa-webpack": "^3.0.2",
     "webpack-cli": "^2.0.13",
-    "webpack-dev-server": "^3.1.1"
+    "webpack-serve": "^0.3.1"
   }
 }

@@ -6,7 +6,6 @@ import ReactDOM from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
 import { syncHistoryWithStore, RouterStore } from 'mobx-react-router';
 import { useStrict } from 'mobx';
-import App from 'App';
 
 useStrict(true);
 
@@ -17,4 +16,4 @@ const stores = {
   routing
 };
 
-ReactDOM.render(<App stores={stores} history={history} />, document.getElementById('root'));
+ReactDOM.render(<div>hello</div>, document.getElementById('root'));

@@ -21,5 +21,6 @@ ADD . /app
 RUN npm run build
 
 EXPOSE 1305
+EXPOSE 1304
 
 CMD ["npm", "run", "static"]
