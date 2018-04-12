@@ -9,8 +9,7 @@
     "static": "node ./serve-static",
     "lint": "eslint src",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -27,7 +26,6 @@
     "connect-history-api-fallback": "^1.5.0",
     "css-loader": "^0.28.8",
     "exports-loader": "^0.7.0",
-    "express": "^4.16.2",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.6",
     "final-form": "^4.0.0",
@@ -73,7 +71,6 @@
     "eslint-plugin-react": "^7.6.1",
     "jest": "^22.1.2",
     "koa-webpack": "^3.0.2",
-    "webpack-cli": "^2.0.13",
-    "webpack-serve": "^0.3.1"
+    "webpack-cli": "^2.0.13"
   }
 }
