@@ -81,11 +81,7 @@ export default class Footer extends React.Component {
             <Grid.Row stretched>
               <Grid.Column>
                 <List link inverted>
-                  <List.Item as={Link} to="/#about">About</List.Item>
-                  <List.Item as={Link} to="/#token">Token</List.Item>
-                  <List.Item as={Link} to="/#paper">Whitepaper</List.Item>
-                  <List.Item as={Link} to="/#roadmap">Roadmap</List.Item>
-                  <List.Item as={Link} to="/#code">Code</List.Item>
+                  {this.props.children}
                 </List>
               </Grid.Column>
               <Grid.Column>
@@ -93,7 +89,6 @@ export default class Footer extends React.Component {
                   <List.Item as={Link} to="/apply">Buy Tokens</List.Item>
                   <List.Item as={Link} to="/privacy">Privacy Policy</List.Item>
                   <List.Item as={Link} to="/terms">Token Sale Terms</List.Item>
-                  <List.Item as="a">Admin Login</List.Item>
                 </List>
               </Grid.Column>
               <Grid.Column>

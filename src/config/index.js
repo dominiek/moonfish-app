@@ -1,7 +1,7 @@
 import defaultConfig from './default';
 import productionConfig from './production';
 import stagingConfig from './staging';
-import deepMerge from 'utils/deepMerge';
+import { deepMerge } from 'lodash';
 
 const hostname = window.location.hostname;
 

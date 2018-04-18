@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
 import { syncHistoryWithStore, RouterStore } from 'mobx-react-router';
 import { useStrict } from 'mobx';
-import App from 'containers/App';
+import App from 'App';
 
 useStrict(true);
 

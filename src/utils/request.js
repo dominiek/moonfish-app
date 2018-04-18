@@ -26,25 +26,25 @@ export default function request(options) {
   } else {
     promise = fetch(endpoint, { method, headers, body: JSON.stringify(body) });
   }
-  return new Promise((resolve, reject) => {
-    promise.then(res => {
-      if (![200, 201].includes(res.status)) {
-        return reject(new Error('Bad status code from API'));
+
+  return promise.then(res => {
+    if (res.status === 204) return undefined;
+
+    return res.text().then((response) => {
+      let json;
+      try {
+        json = JSON.parse(response);
+      } catch (e) {
+        throw new Error('Bad JSON response from API');
       }
-      return res.text().then(response => {
-        let json;
-        try {
-          json = JSON.parse(response);
-        } catch (e) {
-          return reject(new Error('Bad JSON response from API'));
-        }
-        if (!json) reject(new Error('Null JSON response from API'));
-        const { error, data } = json;
-        if (error) {
-          return reject(new Error(error.message));
-        }
-        return resolve(data, response);
-      }).catch(error => reject(error));
-    }).catch(error => reject(error));
+      if (!json) throw new Error('Null JSON response from API');
+      const { error, data } = json;
+      if (error) {
+        const err = new Error(error.message);
+        err.status = res.status;
+        throw err;
+      }
+      return data;
+    });
   });
 }

@@ -7,25 +7,20 @@ export default function FormInput({
   type,
   label,
   placeholder,
-  as: As = Form.Input,
+  as: As = Form.Checkbox,
   meta,
-  beforeInput,
   ...props
 }) {
-  function handleChange(e, { value }) {
-    return input.onChange(value);
+  function handleChange(e, { checked }) {
+    return input.onChange(checked);
   }
 
   return (
     <Form.Field error={!!(meta.error && meta.touched)}>
-      {beforeInput}
       <As
         {...props}
-        {...input}
         label={label}
-        value={input.value}
-        type={type}
-        placeholder={placeholder}
+        checked={!!input.value}
         onChange={handleChange}
       />
     </Form.Field>

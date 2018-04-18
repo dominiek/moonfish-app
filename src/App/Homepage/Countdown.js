@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Statistic,
-} from 'semantic-ui-react';
+import { Statistic } from 'semantic-ui-react';
 
 const calculateCountdown = (endDate) => {
   let diff = (Date.parse(new Date(endDate)) - Date.parse(new Date())) / 1000;
