@@ -1,6 +1,7 @@
 const Koa = require("koa");
 const compress = require("koa-compress");
 const koaStatic = require("koa-static");
+const historyApiFallback = require("./history-middleware");
 
 const admin = new Koa();
 const app = new Koa();
@@ -26,9 +27,11 @@ if (process.env.REDIRECT_TO_HTTPS) {
   admin.use(redirecthttpsMiddleware);
 }
 
+app.use(historyApiFallback({ index: "/" }));
 app.use(compress());
 app.use(koaStatic("./dist"));
 
+admin.use(historyApiFallback({ index: "/" }));
 admin.use(async (ctx, next) => {
   if (ctx.url === "/") {
     ctx.url = "/admin.html";
