@@ -1,7 +1,7 @@
 
 _Disclaimer: This is experimental work in progress. Do not use this in any production ICOs yet._
 
-_This has evolved to: https://github.com/bedrockio/bedrock-core _
+_This has evolved to: https://github.com/bedrockio/bedrock-core_
 
 # Moonfish App
 
