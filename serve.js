@@ -1,6 +1,7 @@
 const Koa = require("koa");
 const config = require("./webpack.config");
 const webpack = require("koa-webpack"); // eslint-disable-line
+const historyApiFallback = require("./history-middleware");
 
 const admin = new Koa();
 const app = new Koa();
@@ -15,14 +16,18 @@ const webpackmiddleware = webpack({
     mode: "development"
   }
 });
+
+app.use(historyApiFallback({ index: "/" }));
+admin.use(historyApiFallback({ index: "/" }));
 admin.use(async (ctx, next) => {
   if (ctx.url === "/") {
     ctx.url = "/admin.html";
   }
   await next();
 });
+
 admin.use(webpackmiddleware);
 app.use(webpackmiddleware);
 
-admin.listen(APP_PORT, HOST);
-app.listen(ADMIN_PORT, HOST);
+admin.listen(ADMIN_PORT, HOST);
+app.listen(APP_PORT, HOST);
